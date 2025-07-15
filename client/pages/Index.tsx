@@ -743,6 +743,12 @@ export default function Index() {
           </div>
         </div>
       </footer>
+
+      {/* Waitlist Modal */}
+      <WaitlistModal
+        isOpen={isWaitlistModalOpen}
+        onClose={closeWaitlistModal}
+      />
     </div>
   );
 }
