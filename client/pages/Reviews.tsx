@@ -350,11 +350,6 @@ export default function Reviews() {
             {/* Rachel Kim */}
             <div className="bg-gray-50 rounded-xl p-6">
               <div className="flex items-center mb-4">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/b4e6a0c25793c387b3ee9c7b9e2a82d80615fbb8?width=96"
-                  alt="Rachel Kim"
-                  className="w-12 h-12 rounded-full mr-3"
-                />
                 <div>
                   <h4 className="font-bold text-gray-900">Rachel Kim</h4>
                   <p className="text-sm text-gray-600">High School Senior</p>
@@ -381,11 +376,6 @@ export default function Reviews() {
             {/* Michael Brown */}
             <div className="bg-gray-50 rounded-xl p-6">
               <div className="flex items-center mb-4">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/1f928f85edd8bc6f74152003a9412e459c4f5569?width=96"
-                  alt="Michael Brown"
-                  className="w-12 h-12 rounded-full mr-3"
-                />
                 <div>
                   <h4 className="font-bold text-gray-900">Michael Brown</h4>
                   <p className="text-sm text-gray-600">History Major</p>
