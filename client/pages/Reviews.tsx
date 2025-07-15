@@ -52,13 +52,10 @@ export default function Reviews() {
               </span>
             </nav>
 
-            {/* CTA Buttons */}
-            <div className="flex items-center space-x-4">
-              <button className="text-gray-600 hover:text-gray-900 text-sm font-medium">
-                Login
-              </button>
+            {/* CTA Button */}
+            <div className="flex items-center">
               <button className="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors">
-                Sign Up
+                Join Our Waitlist
               </button>
             </div>
           </div>
