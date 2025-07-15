@@ -58,10 +58,9 @@ export default function Features() {
               >
                 For Recruiters
               </Link>
-              
             </nav>
 
-                        <button
+            <button
               onClick={openWaitlistModal}
               className="bg-studybud-blue-500 text-white px-6 py-2 rounded-lg hover:bg-studybud-blue-600 transition-colors font-semibold"
             >
@@ -81,7 +80,7 @@ export default function Features() {
             Discover how StudyBud AI transforms your learning experience with
             cutting-edge artificial intelligence and personalized insights.
           </p>
-                    <button
+          <button
             onClick={openWaitlistModal}
             className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all"
           >
@@ -475,184 +474,12 @@ export default function Features() {
             Experience the power of AI-driven learning with our interactive
             demo. No signup required.
           </p>
-                    <button
+          <button
             onClick={openWaitlistModal}
             className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all"
           >
             Join Our Waitlist
           </button>
-        </div>
-      </section>
-
-      
-        <div className="max-w-7xl mx-auto px-6">
-          
-
-          <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Free Plan */}
-            <div className="bg-gray-50 rounded-xl p-8">
-              <h3 className="text-2xl font-bold text-studybud-gray-800 mb-6">
-                Free
-              </h3>
-              <div className="mb-6">
-                <span className="text-4xl font-bold text-studybud-gray-800">
-                  $0
-                </span>
-                <span className="text-studybud-gray-600 ml-2">/month</span>
-              </div>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center">
-                  <svg
-                    className="w-4 h-4 text-green-500 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 14 16"
-                  >
-                    <path d="M13.7063 3.2937C14.0969 3.68433 14.0969 4.3187 13.7063 4.70933L5.70627 12.7093C5.31565 13.1 4.68127 13.1 4.29065 12.7093L0.290649 8.70933C-0.0999756 8.3187 -0.0999756 7.68433 0.290649 7.2937C0.681274 6.90308 1.31565 6.90308 1.70627 7.2937L5.00002 10.5843L12.2938 3.2937C12.6844 2.90308 13.3188 2.90308 13.7094 3.2937H13.7063Z" />
-                  </svg>
-                  <span>5 practice tests per month</span>
-                </li>
-                <li className="flex items-center">
-                  <svg
-                    className="w-4 h-4 text-green-500 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 14 16"
-                  >
-                    <path d="M13.7063 3.2937C14.0969 3.68433 14.0969 4.3187 13.7063 4.70933L5.70627 12.7093C5.31565 13.1 4.68127 13.1 4.29065 12.7093L0.290649 8.70933C-0.0999756 8.3187 -0.0999756 7.68433 0.290649 7.2937C0.681274 6.90308 1.31565 6.90308 1.70627 7.2937L5.00002 10.5843L12.2938 3.2937C12.6844 2.90308 13.3188 2.90308 13.7094 3.2937H13.7063Z" />
-                  </svg>
-                  <span>Basic AI feedback</span>
-                </li>
-              </ul>
-                            <button
-                onClick={openWaitlistModal}
-                className="w-full bg-gray-300 text-studybud-gray-800 py-3 rounded-lg font-semibold"
-              >
-                Join Our Waitlist
-              </button>
-            </div>
-
-            {/* Pro Plan */}
-            <div className="bg-studybud-blue-500 rounded-xl p-8 relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <span className="bg-yellow-400 text-studybud-gray-800 px-4 py-1 rounded-full text-sm font-semibold">
-                  Most Popular
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-6">Pro</h3>
-              <div className="mb-6">
-                <span className="text-4xl font-bold text-white">$19</span>
-                <span className="text-white ml-2">/month</span>
-              </div>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center">
-                  <svg
-                    className="w-4 h-4 text-green-300 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 14 16"
-                  >
-                    <path d="M13.7063 3.2937C14.0969 3.68433 14.0969 4.3187 13.7063 4.70933L5.70627 12.7093C5.31565 13.1 4.68127 13.1 4.29065 12.7093L0.290649 8.70933C-0.0999756 8.3187 -0.0999756 7.68433 0.290649 7.2937C0.681274 6.90308 1.31565 6.90308 1.70627 7.2937L5.00002 10.5843L12.2938 3.2937C12.6844 2.90308 13.3188 2.90308 13.7094 3.2937H13.7063Z" />
-                  </svg>
-                  <span className="text-white">Unlimited practice tests</span>
-                </li>
-                <li className="flex items-center">
-                  <svg
-                    className="w-4 h-4 text-green-300 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 14 16"
-                  >
-                    <path d="M13.7063 3.2937C14.0969 3.68433 14.0969 4.3187 13.7063 4.70933L5.70627 12.7093C5.31565 13.1 4.68127 13.1 4.29065 12.7093L0.290649 8.70933C-0.0999756 8.3187 -0.0999756 7.68433 0.290649 7.2937C0.681274 6.90308 1.31565 6.90308 1.70627 7.2937L5.00002 10.5843L12.2938 3.2937C12.6844 2.90308 13.3188 2.90308 13.7094 3.2937H13.7063Z" />
-                  </svg>
-                  <span className="text-white">Advanced AI feedback</span>
-                </li>
-                <li className="flex items-center">
-                  <svg
-                    className="w-4 h-4 text-green-300 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 14 16"
-                  >
-                    <path d="M13.7063 3.2937C14.0969 3.68433 14.0969 4.3187 13.7063 4.70933L5.70627 12.7093C5.31565 13.1 4.68127 13.1 4.29065 12.7093L0.290649 8.70933C-0.0999756 8.3187 -0.0999756 7.68433 0.290649 7.2937C0.681274 6.90308 1.31565 6.90308 1.70627 7.2937L5.00002 10.5843L12.2938 3.2937C12.6844 2.90308 13.3188 2.90308 13.7094 3.2937H13.7063Z" />
-                  </svg>
-                  <span className="text-white">Personalized study plans</span>
-                </li>
-                <li className="flex items-center">
-                  <svg
-                    className="w-4 h-4 text-green-300 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 14 16"
-                  >
-                    <path d="M13.7063 3.2937C14.0969 3.68433 14.0969 4.3187 13.7063 4.70933L5.70627 12.7093C5.31565 13.1 4.68127 13.1 4.29065 12.7093L0.290649 8.70933C-0.0999756 8.3187 -0.0999756 7.68433 0.290649 7.2937C0.681274 6.90308 1.31565 6.90308 1.70627 7.2937L5.00002 10.5843L12.2938 3.2937C12.6844 2.90308 13.3188 2.90308 13.7094 3.2937H13.7063Z" />
-                  </svg>
-                  <span className="text-white">Performance analytics</span>
-                </li>
-              </ul>
-                            <button
-                onClick={openWaitlistModal}
-                className="w-full bg-white text-studybud-blue-500 py-3 rounded-lg font-semibold"
-              >
-                Join Our Waitlist
-              </button>
-            </div>
-
-            {/* Premium Plan */}
-            <div className="bg-gray-50 rounded-xl p-8">
-              <h3 className="text-2xl font-bold text-studybud-gray-800 mb-6">
-                Premium
-              </h3>
-              <div className="mb-6">
-                <span className="text-4xl font-bold text-studybud-gray-800">
-                  $39
-                </span>
-                <span className="text-studybud-gray-600 ml-2">/month</span>
-              </div>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center">
-                  <svg
-                    className="w-4 h-4 text-green-500 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 14 16"
-                  >
-                    <path d="M13.7063 3.2937C14.0969 3.68433 14.0969 4.3187 13.7063 4.70933L5.70627 12.7093C5.31565 13.1 4.68127 13.1 4.29065 12.7093L0.290649 8.70933C-0.0999756 8.3187 -0.0999756 7.68433 0.290649 7.2937C0.681274 6.90308 1.31565 6.90308 1.70627 7.2937L5.00002 10.5843L12.2938 3.2937C12.6844 2.90308 13.3188 2.90308 13.7094 3.2937H13.7063Z" />
-                  </svg>
-                  <span>Everything in Pro</span>
-                </li>
-                <li className="flex items-center">
-                  <svg
-                    className="w-4 h-4 text-green-500 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 14 16"
-                  >
-                    <path d="M13.7063 3.2937C14.0969 3.68433 14.0969 4.3187 13.7063 4.70933L5.70627 12.7093C5.31565 13.1 4.68127 13.1 4.29065 12.7093L0.290649 8.70933C-0.0999756 8.3187 -0.0999756 7.68433 0.290649 7.2937C0.681274 6.90308 1.31565 6.90308 1.70627 7.2937L5.00002 10.5843L12.2938 3.2937C12.6844 2.90308 13.3188 2.90308 13.7094 3.2937H13.7063Z" />
-                  </svg>
-                  <span>1-on-1 tutoring sessions</span>
-                </li>
-                <li className="flex items-center">
-                  <svg
-                    className="w-4 h-4 text-green-500 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 14 16"
-                  >
-                    <path d="M13.7063 3.2937C14.0969 3.68433 14.0969 4.3187 13.7063 4.70933L5.70627 12.7093C5.31565 13.1 4.68127 13.1 4.29065 12.7093L0.290649 8.70933C-0.0999756 8.3187 -0.0999756 7.68433 0.290649 7.2937C0.681274 6.90308 1.31565 6.90308 1.70627 7.2937L5.00002 10.5843L12.2938 3.2937C12.6844 2.90308 13.3188 2.90308 13.7094 3.2937H13.7063Z" />
-                  </svg>
-                  <span>Priority support</span>
-                </li>
-                <li className="flex items-center">
-                  <svg
-                    className="w-4 h-4 text-green-500 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 14 16"
-                  >
-                    <path d="M13.7063 3.2937C14.0969 3.68433 14.0969 4.3187 13.7063 4.70933L5.70627 12.7093C5.31565 13.1 4.68127 13.1 4.29065 12.7093L0.290649 8.70933C-0.0999756 8.3187 -0.0999756 7.68433 0.290649 7.2937C0.681274 6.90308 1.31565 6.90308 1.70627 7.2937L5.00002 10.5843L12.2938 3.2937C12.6844 2.90308 13.3188 2.90308 13.7094 3.2937H13.7063Z" />
-                  </svg>
-                  <span>Personalized study plans</span>
-                </li>
-              </ul>
-                            <button
-                onClick={openWaitlistModal}
-                className="w-full bg-studybud-blue-500 text-white py-3 rounded-lg font-semibold"
-              >
-                Join Our Waitlist
-              </button>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -768,7 +595,7 @@ export default function Features() {
           <div className="border-t border-studybud-gray-700 pt-8 text-center text-gray-300">
             <p>&copy; 2024 StudyBud. All rights reserved.</p>
           </div>
-                </div>
+        </div>
       </footer>
 
       {/* Waitlist Modal */}
