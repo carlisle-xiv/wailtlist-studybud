@@ -418,7 +418,6 @@ const Recruiters: React.FC = () => {
             <div>
               <div className="bg-white p-8 rounded-xl shadow-lg">
                 <div className="text-center mb-6">
-                  <div className="w-20 h-20 bg-gray-300 rounded-full mx-auto mb-4"></div>
                   <h4 className="text-lg font-bold text-gray-900">
                     Kweku Asamoah
                   </h4>
