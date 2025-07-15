@@ -496,7 +496,10 @@ export default function Index() {
           </p>
 
           <div className="flex justify-center">
-            <button className="bg-white text-studybud-blue-500 px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all">
+            <button
+              onClick={openWaitlistModal}
+              className="bg-white text-studybud-blue-500 px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all"
+            >
               Join Our Waitlist
             </button>
           </div>
