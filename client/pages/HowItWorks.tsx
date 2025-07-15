@@ -4,9 +4,18 @@ import WaitlistModal from "../components/WaitlistModal";
 
 export default function HowItWorks() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
 
   const toggleFaq = (index: number) => {
     setExpandedFaq(expandedFaq === index ? null : index);
+  };
+
+  const openWaitlistModal = () => {
+    setIsWaitlistModalOpen(true);
+  };
+
+  const closeWaitlistModal = () => {
+    setIsWaitlistModalOpen(false);
   };
 
   return (
