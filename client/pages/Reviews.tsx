@@ -47,6 +47,12 @@ export default function Reviews() {
               >
                 For Teachers
               </Link>
+              <Link
+                to="/recruiters"
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium"
+              >
+                For Recruiters
+              </Link>
               <span className="text-blue-500 px-3 py-2 text-sm font-medium">
                 Reviews
               </span>
