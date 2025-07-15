@@ -56,7 +56,7 @@ export default function HowItWorks() {
             </nav>
 
             <button className="bg-studybud-blue-500 text-white px-6 py-2 rounded-lg hover:bg-studybud-blue-600 transition-colors font-semibold">
-              Get Started
+              Join Our Waitlist
             </button>
           </div>
         </div>
@@ -74,7 +74,7 @@ export default function HowItWorks() {
             results.
           </p>
           <button className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all">
-            Get Started
+            Join Our Waitlist
           </button>
         </div>
       </section>
@@ -599,7 +599,7 @@ export default function HowItWorks() {
             with StudyBud
           </p>
           <button className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all mr-4">
-            Get Started
+            Join Our Waitlist
           </button>
         </div>
       </section>
