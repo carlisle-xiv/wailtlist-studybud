@@ -3,6 +3,16 @@ import { Link } from "react-router-dom";
 import WaitlistModal from "../components/WaitlistModal";
 
 const Recruiters: React.FC = () => {
+  const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
+
+  const openWaitlistModal = () => {
+    setIsWaitlistModalOpen(true);
+  };
+
+  const closeWaitlistModal = () => {
+    setIsWaitlistModalOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
