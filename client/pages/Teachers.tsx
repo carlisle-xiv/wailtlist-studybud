@@ -3,6 +3,16 @@ import { useState } from "react";
 import WaitlistModal from "../components/WaitlistModal";
 
 const Teachers = () => {
+  const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
+
+  const openWaitlistModal = () => {
+    setIsWaitlistModalOpen(true);
+  };
+
+  const closeWaitlistModal = () => {
+    setIsWaitlistModalOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
