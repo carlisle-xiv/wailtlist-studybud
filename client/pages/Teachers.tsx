@@ -24,25 +24,25 @@ const Teachers = () => {
             </Link>
 
             {/* Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
+            <nav className="hidden md:flex space-x-8">
               <Link
                 to="/features"
-                className="text-gray-600 hover:text-studybud-blue-500 transition-colors"
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium"
               >
                 Features
               </Link>
               <Link
                 to="/how-it-works"
-                className="text-gray-600 hover:text-studybud-blue-500 transition-colors"
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium"
               >
                 How It Works
               </Link>
-              <span className="text-studybud-blue-500 font-medium">
+              <span className="text-blue-500 px-3 py-2 text-sm font-medium">
                 For Teachers
               </span>
               <Link
                 to="/reviews"
-                className="text-gray-600 hover:text-studybud-blue-500 transition-colors"
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium"
               >
                 Reviews
               </Link>
