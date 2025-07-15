@@ -68,7 +68,10 @@ const Teachers = () => {
 
             {/* CTA Button */}
             <div className="flex items-center">
-              <button className="bg-studybud-blue-500 text-white px-4 py-2 rounded-lg hover:bg-studybud-blue-600 transition-colors">
+              <button
+                onClick={openWaitlistModal}
+                className="bg-studybud-blue-500 text-white px-4 py-2 rounded-lg hover:bg-studybud-blue-600 transition-colors"
+              >
                 Join Our Waitlist
               </button>
             </div>
@@ -90,7 +93,10 @@ const Teachers = () => {
                 with StudyBud for educators.
               </p>
               <div>
-                <button className="bg-gradient-to-r from-studybud-blue-500 to-cyan-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all">
+                <button
+                  onClick={openWaitlistModal}
+                  className="bg-gradient-to-r from-studybud-blue-500 to-cyan-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all"
+                >
                   Join Our Waitlist
                 </button>
               </div>
