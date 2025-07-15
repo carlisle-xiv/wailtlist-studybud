@@ -66,7 +66,10 @@ export default function Features() {
               </Link>
             </nav>
 
-            <button className="bg-studybud-blue-500 text-white px-6 py-2 rounded-lg hover:bg-studybud-blue-600 transition-colors font-semibold">
+            <button
+              onClick={openWaitlistModal}
+              className="bg-studybud-blue-500 text-white px-6 py-2 rounded-lg hover:bg-studybud-blue-600 transition-colors font-semibold"
+            >
               Join Our Waitlist
             </button>
           </div>
@@ -83,7 +86,10 @@ export default function Features() {
             Discover how StudyBud AI transforms your learning experience with
             cutting-edge artificial intelligence and personalized insights.
           </p>
-          <button className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all">
+          <button
+            onClick={openWaitlistModal}
+            className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all"
+          >
             Join Our Waitlist
           </button>
         </div>
@@ -474,7 +480,10 @@ export default function Features() {
             Experience the power of AI-driven learning with our interactive
             demo. No signup required.
           </p>
-          <button className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all">
+          <button
+            onClick={openWaitlistModal}
+            className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all"
+          >
             Join Our Waitlist
           </button>
         </div>
@@ -526,7 +535,10 @@ export default function Features() {
                   <span>Basic AI feedback</span>
                 </li>
               </ul>
-              <button className="w-full bg-gray-300 text-studybud-gray-800 py-3 rounded-lg font-semibold">
+              <button
+                onClick={openWaitlistModal}
+                className="w-full bg-gray-300 text-studybud-gray-800 py-3 rounded-lg font-semibold"
+              >
                 Join Our Waitlist
               </button>
             </div>
@@ -585,7 +597,10 @@ export default function Features() {
                   <span className="text-white">Performance analytics</span>
                 </li>
               </ul>
-              <button className="w-full bg-white text-studybud-blue-500 py-3 rounded-lg font-semibold">
+              <button
+                onClick={openWaitlistModal}
+                className="w-full bg-white text-studybud-blue-500 py-3 rounded-lg font-semibold"
+              >
                 Join Our Waitlist
               </button>
             </div>
@@ -643,7 +658,10 @@ export default function Features() {
                   <span>Personalized study plans</span>
                 </li>
               </ul>
-              <button className="w-full bg-studybud-blue-500 text-white py-3 rounded-lg font-semibold">
+              <button
+                onClick={openWaitlistModal}
+                className="w-full bg-studybud-blue-500 text-white py-3 rounded-lg font-semibold"
+              >
                 Join Our Waitlist
               </button>
             </div>
