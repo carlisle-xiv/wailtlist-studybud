@@ -24,7 +24,6 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
     schoolAddress: "",
     schoolCity: "",
     schoolCountry: "",
-    accountType: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
