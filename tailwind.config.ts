@@ -57,11 +57,58 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // StudyBud AI custom colors
+        studybud: {
+          blue: {
+            50: "#EFF6FF",
+            500: "#3B82F6",
+            600: "#2563EB",
+            background: "#DBEAFE",
+          },
+          cyan: {
+            500: "#06B6D4",
+            600: "#0D9488",
+            background: "#CCFBF1",
+          },
+          purple: {
+            500: "#8B5CF6",
+            600: "#9333EA",
+            background: "#F3E8FF",
+            light: "#FAF5FF",
+          },
+          green: {
+            500: "#16A34A",
+            background: "#DCFCE7",
+            light: "#86EFAC",
+          },
+          emerald: {
+            light: "#F0FDFA",
+          },
+          gray: {
+            50: "#F9FAFB",
+            600: "#4B5563",
+            700: "#374151",
+            800: "#111827",
+            900: "#1F2937",
+          },
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      backgroundImage: {
+        // StudyBud AI gradients
+        "hero-gradient":
+          "linear-gradient(90deg, #EFF6FF 0%, #FAF5FF 50%, #F0FDFA 100%)",
+        "button-gradient": "linear-gradient(90deg, #3B82F6 0%, #06B6D4 100%)",
+        "step-blue": "linear-gradient(90deg, #3B82F6 0%, #2563EB 100%)",
+        "step-cyan": "linear-gradient(90deg, #06B6D4 0%, #0D9488 100%)",
+        "step-purple": "linear-gradient(90deg, #8B5CF6 0%, #9333EA 100%)",
+        "educators-gradient":
+          "linear-gradient(90deg, #3B82F6 0%, #06B6D4 100%)",
+        "cta-gradient": "linear-gradient(90deg, #9333EA 0%, #3B82F6 100%)",
       },
       keyframes: {
         "accordion-down": {
