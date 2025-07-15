@@ -462,9 +462,7 @@ export default function Reviews() {
                   <h3 className="text-lg font-bold text-gray-900">
                     Dr. Lisa Chang
                   </h3>
-                  <p className="text-gray-600">
-                    Chemistry Teacher, Lincoln High
-                  </p>
+                  <p className="text-gray-600">Chemistry Teacher</p>
                   <div className="flex mt-2">
                     {[...Array(5)].map((_, i) => (
                       <svg
