@@ -9,7 +9,7 @@ export default function Reviews() {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <div className="flex-shrink-0 flex items-center">
+              <Link to="/" className="flex-shrink-0 flex items-center">
                 <svg
                   className="h-8 w-8 text-blue-500"
                   viewBox="0 0 30 24"
@@ -24,7 +24,7 @@ export default function Reviews() {
                 <span className="ml-2 text-xl font-bold text-gray-900">
                   StudyBud
                 </span>
-              </div>
+              </Link>
             </div>
 
             {/* Navigation */}
