@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Features from "./pages/Features";
 import Teachers from "./pages/Teachers";
+import Recruiters from "./pages/Recruiters";
 import Reviews from "./pages/Reviews";
 import HowItWorks from "./pages/HowItWorks";
 import NotFound from "./pages/NotFound";
