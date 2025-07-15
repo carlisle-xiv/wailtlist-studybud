@@ -86,12 +86,11 @@ export default function Index() {
             <div className="space-y-8">
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
                 Study <span className="text-studybud-blue-500">Smarter</span>,
-                Not Harder
+                Improve, Excel.
               </h1>
               <p className="text-xl text-studybud-gray-600 leading-relaxed">
-                AI-Powered Reports That Help You Ace Your Exams. Get
-                personalized insights and improve your performance with smart
-                analytics.
+                AI-powered insights to help you identify gaps and build
+                confidence for faster, smarter improvement.
               </p>
               <button className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all">
                 Join Our Waitlist
@@ -415,11 +414,6 @@ export default function Index() {
             {/* Testimonial 1 */}
             <div className="bg-studybud-gray-50 p-8 rounded-xl">
               <div className="flex items-center gap-4 mb-6">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/43cb8c73a768732869b5fb7218e17933088e7ba2?width=96"
-                  alt="Sarah Chen"
-                  className="w-12 h-12 rounded-full"
-                />
                 <div>
                   <h4 className="font-semibold text-studybud-gray-800">
                     Sarah Chen
@@ -438,11 +432,6 @@ export default function Index() {
             {/* Testimonial 2 */}
             <div className="bg-studybud-gray-50 p-8 rounded-xl">
               <div className="flex items-center gap-4 mb-6">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/9b73dde4179c8b8c24f161a24f19390b3aff500e?width=96"
-                  alt="Marcus Johnson"
-                  className="w-12 h-12 rounded-full"
-                />
                 <div>
                   <h4 className="font-semibold text-studybud-gray-800">
                     Marcus Johnson
@@ -461,11 +450,6 @@ export default function Index() {
             {/* Testimonial 3 */}
             <div className="bg-studybud-gray-50 p-8 rounded-xl">
               <div className="flex items-center gap-4 mb-6">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/57beba2c4fe6a8b3c72add00db1b3755ffb37328?width=96"
-                  alt="Emma Rodriguez"
-                  className="w-12 h-12 rounded-full"
-                />
                 <div>
                   <h4 className="font-semibold text-studybud-gray-800">
                     Emma Rodriguez
