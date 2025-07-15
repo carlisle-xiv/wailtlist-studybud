@@ -81,7 +81,10 @@ export default function Index() {
 
             {/* Join Waitlist Button */}
             <div className="flex items-center">
-              <button className="bg-studybud-blue-500 text-white px-6 py-2 rounded-lg hover:bg-studybud-blue-600 transition-colors font-semibold">
+              <button
+                onClick={openWaitlistModal}
+                className="bg-studybud-blue-500 text-white px-6 py-2 rounded-lg hover:bg-studybud-blue-600 transition-colors font-semibold"
+              >
                 Join Our Waitlist
               </button>
             </div>
