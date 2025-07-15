@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import WaitlistModal from "../components/WaitlistModal";
 
 export default function Reviews() {
   return (
