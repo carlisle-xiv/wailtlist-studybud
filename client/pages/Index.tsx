@@ -62,13 +62,10 @@ export default function Index() {
               </a>
             </nav>
 
-            {/* Auth Buttons */}
-            <div className="flex items-center gap-4">
-              <button className="text-studybud-gray-600 hover:text-studybud-blue-500 transition-colors">
-                Login
-              </button>
-              <button className="bg-studybud-blue-500 text-white px-4 py-2 rounded-lg hover:bg-studybud-blue-600 transition-colors">
-                Sign Up
+            {/* Join Waitlist Button */}
+            <div className="flex items-center">
+              <button className="bg-studybud-blue-500 text-white px-6 py-2 rounded-lg hover:bg-studybud-blue-600 transition-colors font-semibold">
+                Join Our Waitlist
               </button>
             </div>
           </div>
@@ -90,7 +87,7 @@ export default function Index() {
                 analytics.
               </p>
               <button className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all">
-                Take a Smart Practice Test
+                Join Our Waitlist
               </button>
             </div>
             <div className="flex justify-center">
@@ -381,7 +378,7 @@ export default function Index() {
               </ul>
 
               <button className="bg-white text-studybud-blue-500 px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all">
-                Start Teaching with AI
+                Join Our Waitlist
               </button>
             </div>
             <div className="flex justify-center">
@@ -491,12 +488,9 @@ export default function Index() {
             AI-powered insights.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <button className="bg-white text-studybud-blue-500 px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all">
-              Start Free Trial
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-studybud-purple-500 transition-all">
-              View Demo
+              Join Our Waitlist
             </button>
           </div>
         </div>
