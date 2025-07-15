@@ -506,35 +506,6 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      {/* Proven Results */}
-      <section className="py-20 bg-gradient-to-r from-studybud-blue-500 to-studybud-cyan-500">
-        <div className="max-w-6xl mx-auto text-center px-6">
-          <h2 className="text-4xl font-bold text-white mb-6">Proven Results</h2>
-          <p className="text-xl text-blue-100 mb-12">
-            See the impact StudyBud has on student performance
-          </p>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">89%</div>
-              <div className="text-blue-100">Grade Improvement</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">2.3x</div>
-              <div className="text-blue-100">Faster Learning</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">95%</div>
-              <div className="text-blue-100">Student Satisfaction</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">50K+</div>
-              <div className="text-blue-100">Success Stories</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-6">
@@ -562,7 +533,7 @@ export default function HowItWorks() {
               {
                 question: "Can I use StudyBud for any subject?",
                 answer:
-                  "Yes! We support over 50 subjects including STEM, humanities, languages, and professional certifications. Our AI adapts to each subject's unique requirements.",
+                  "Yes! StudyBud supports over 50 subjects including STEM, humanities, and languages. Plus, we work with schools to host their own custom courses, students can enroll in these and get the same personalized AI-powered insights. Our platform is subject-agnostic and adapts to any curriculum.",
               },
               {
                 question: "Is my data secure and private?",
