@@ -53,7 +53,7 @@ export default function Features() {
             </nav>
 
             <button className="bg-studybud-blue-500 text-white px-6 py-2 rounded-lg hover:bg-studybud-blue-600 transition-colors font-semibold">
-              Join Our Waitlist
+              Get Started
             </button>
           </div>
         </div>
@@ -70,7 +70,7 @@ export default function Features() {
             cutting-edge artificial intelligence and personalized insights.
           </p>
           <button className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all">
-            Join Our Waitlist
+            Get Started
           </button>
         </div>
       </section>
@@ -461,7 +461,7 @@ export default function Features() {
             demo. No signup required.
           </p>
           <button className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all">
-            Join Our Waitlist
+            Get Started
           </button>
         </div>
       </section>
@@ -513,7 +513,7 @@ export default function Features() {
                 </li>
               </ul>
               <button className="w-full bg-gray-300 text-studybud-gray-800 py-3 rounded-lg font-semibold">
-                Join Our Waitlist
+                Get Started
               </button>
             </div>
 
@@ -572,7 +572,7 @@ export default function Features() {
                 </li>
               </ul>
               <button className="w-full bg-white text-studybud-blue-500 py-3 rounded-lg font-semibold">
-                Join Our Waitlist
+                Get Started
               </button>
             </div>
 
@@ -630,7 +630,7 @@ export default function Features() {
                 </li>
               </ul>
               <button className="w-full bg-studybud-blue-500 text-white py-3 rounded-lg font-semibold">
-                Join Our Waitlist
+                Get Started
               </button>
             </div>
           </div>
