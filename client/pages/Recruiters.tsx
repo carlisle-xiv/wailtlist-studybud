@@ -675,6 +675,12 @@ const Recruiters: React.FC = () => {
           </div>
         </div>
       </footer>
+
+      {/* Waitlist Modal */}
+      <WaitlistModal
+        isOpen={isWaitlistModalOpen}
+        onClose={closeWaitlistModal}
+      />
     </div>
   );
 };
