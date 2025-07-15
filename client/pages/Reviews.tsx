@@ -317,11 +317,6 @@ export default function Reviews() {
             {/* David Park */}
             <div className="bg-gray-50 rounded-xl p-6">
               <div className="flex items-center mb-4">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/349965e41688233e02d674b0bd3b958817b98add?width=96"
-                  alt="David Park"
-                  className="w-12 h-12 rounded-full mr-3"
-                />
                 <div>
                   <h4 className="font-bold text-gray-900">David Park</h4>
                   <p className="text-sm text-gray-600">Business Student</p>
