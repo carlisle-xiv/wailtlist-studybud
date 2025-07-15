@@ -58,9 +58,10 @@ export default function Features() {
               >
                 For Recruiters
               </Link>
+              
             </nav>
 
-            <button
+                        <button
               onClick={openWaitlistModal}
               className="bg-studybud-blue-500 text-white px-6 py-2 rounded-lg hover:bg-studybud-blue-600 transition-colors font-semibold"
             >
@@ -80,7 +81,7 @@ export default function Features() {
             Discover how StudyBud AI transforms your learning experience with
             cutting-edge artificial intelligence and personalized insights.
           </p>
-          <button
+                    <button
             onClick={openWaitlistModal}
             className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all"
           >
@@ -474,7 +475,7 @@ export default function Features() {
             Experience the power of AI-driven learning with our interactive
             demo. No signup required.
           </p>
-          <button
+                    <button
             onClick={openWaitlistModal}
             className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all"
           >
@@ -483,8 +484,7 @@ export default function Features() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-20 bg-white">
+      
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-studybud-gray-800 mb-4">
@@ -529,7 +529,7 @@ export default function Features() {
                   <span>Basic AI feedback</span>
                 </li>
               </ul>
-              <button
+                            <button
                 onClick={openWaitlistModal}
                 className="w-full bg-gray-300 text-studybud-gray-800 py-3 rounded-lg font-semibold"
               >
@@ -591,7 +591,7 @@ export default function Features() {
                   <span className="text-white">Performance analytics</span>
                 </li>
               </ul>
-              <button
+                            <button
                 onClick={openWaitlistModal}
                 className="w-full bg-white text-studybud-blue-500 py-3 rounded-lg font-semibold"
               >
@@ -652,7 +652,7 @@ export default function Features() {
                   <span>Personalized study plans</span>
                 </li>
               </ul>
-              <button
+                            <button
                 onClick={openWaitlistModal}
                 className="w-full bg-studybud-blue-500 text-white py-3 rounded-lg font-semibold"
               >
@@ -775,7 +775,7 @@ export default function Features() {
           <div className="border-t border-studybud-gray-700 pt-8 text-center text-gray-300">
             <p>&copy; 2024 StudyBud. All rights reserved.</p>
           </div>
-        </div>
+                </div>
       </footer>
 
       {/* Waitlist Modal */}
