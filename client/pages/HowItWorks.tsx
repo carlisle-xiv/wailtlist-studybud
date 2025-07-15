@@ -65,7 +65,10 @@ export default function HowItWorks() {
               </Link>
             </nav>
 
-            <button className="bg-studybud-blue-500 text-white px-6 py-2 rounded-lg hover:bg-studybud-blue-600 transition-colors font-semibold">
+            <button
+              onClick={openWaitlistModal}
+              className="bg-studybud-blue-500 text-white px-6 py-2 rounded-lg hover:bg-studybud-blue-600 transition-colors font-semibold"
+            >
               Join Our Waitlist
             </button>
           </div>
@@ -83,7 +86,10 @@ export default function HowItWorks() {
             simple steps. See how thousands of students are achieving better
             results.
           </p>
-          <button className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all">
+          <button
+            onClick={openWaitlistModal}
+            className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all"
+          >
             Join Our Waitlist
           </button>
         </div>
@@ -608,7 +614,10 @@ export default function HowItWorks() {
             Join thousands of students who are already achieving better results
             with StudyBud
           </p>
-          <button className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all mr-4">
+          <button
+            onClick={openWaitlistModal}
+            className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all mr-4"
+          >
             Join Our Waitlist
           </button>
         </div>
