@@ -72,7 +72,10 @@ export default function Reviews() {
 
             {/* CTA Button */}
             <div className="flex items-center">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors">
+              <button
+                onClick={openWaitlistModal}
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors"
+              >
                 Join Our Waitlist
               </button>
             </div>
