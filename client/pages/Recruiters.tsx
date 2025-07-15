@@ -511,9 +511,6 @@ const Recruiters: React.FC = () => {
             >
               Join Our Waitlist
             </button>
-            <button className="border border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-blue-600 transition-colors text-lg font-medium">
-              Schedule Demo
-            </button>
           </div>
         </div>
       </section>
