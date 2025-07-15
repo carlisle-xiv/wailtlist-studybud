@@ -49,12 +49,12 @@ export default function Index() {
               >
                 How It Works
               </a>
-              <a
-                href="#for-teachers"
+              <Link
+                to="/teachers"
                 className="text-studybud-gray-600 hover:text-studybud-blue-500 transition-colors"
               >
                 For Teachers
-              </a>
+              </Link>
               <a
                 href="#reviews"
                 className="text-studybud-gray-600 hover:text-studybud-blue-500 transition-colors"
