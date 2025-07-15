@@ -412,7 +412,7 @@ const Recruiters: React.FC = () => {
                 <div className="text-center mb-6">
                   <div className="w-20 h-20 bg-gray-300 rounded-full mx-auto mb-4"></div>
                   <h4 className="text-lg font-bold text-gray-900">
-                    Sarah Mitchell
+                    Kweku Asamoah
                   </h4>
                   <p className="text-gray-600">Frontend Developer</p>
                 </div>
@@ -451,32 +451,22 @@ const Recruiters: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-gray-50 rounded-xl p-8">
               <div className="flex items-center mb-6">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/7fcd1f98cf662ff965e2708c4d6ea218afe9490c?width=128"
-                  alt="Sarah Johnson"
-                  className="w-16 h-16 rounded-full mr-4"
-                />
                 <div>
                   <h4 className="text-lg font-bold text-gray-900">
                     Sarah Johnson
                   </h4>
-                  <p className="text-gray-600">HR Director, TechCorp</p>
+                  <p className="text-gray-600">HR Director, ae-TEK</p>
                 </div>
               </div>
               <p className="text-gray-700 italic">
-                "StudyBud AI has revolutionized our hiring process. We've
-                reduced time-to-hire by 40% and significantly improved the
-                quality of our hires. The AI insights are incredibly accurate."
+                "StudyBud has revolutionized our hiring process. We've reduced
+                time-to-hire by 40% and significantly improved the quality of
+                our hires. The AI insights are incredibly accurate."
               </p>
             </div>
 
             <div className="bg-gray-50 rounded-xl p-8">
               <div className="flex items-center mb-6">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/74015530f44cf7e10d8e785c832ee392f0f98381?width=128"
-                  alt="Michael Chen"
-                  className="w-16 h-16 rounded-full mr-4"
-                />
                 <div>
                   <h4 className="text-lg font-bold text-gray-900">
                     Michael Chen
@@ -523,7 +513,7 @@ const Recruiters: React.FC = () => {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="text-2xl font-bold text-blue-400 mb-4">
-                StudyBud AI
+                StudyBud
               </div>
               <p className="text-gray-400 mb-4">
                 Empowering recruitment with AI-driven insights and comprehensive
