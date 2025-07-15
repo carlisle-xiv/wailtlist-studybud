@@ -26,27 +26,24 @@ export default function Features() {
             </Link>
 
             <nav className="hidden md:flex space-x-8">
-              <Link
-                to="/features"
-                className="text-studybud-blue-500 font-medium"
-              >
+              <span className="text-blue-500 px-3 py-2 text-sm font-medium">
                 Features
-              </Link>
+              </span>
               <Link
-                to="/"
-                className="text-studybud-gray-600 hover:text-studybud-gray-800"
+                to="/how-it-works"
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium"
               >
                 How It Works
               </Link>
               <Link
                 to="/teachers"
-                className="text-studybud-gray-600 hover:text-studybud-gray-800"
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium"
               >
                 For Teachers
               </Link>
               <Link
-                to="/"
-                className="text-studybud-gray-600 hover:text-studybud-gray-800"
+                to="/reviews"
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium"
               >
                 Reviews
               </Link>
