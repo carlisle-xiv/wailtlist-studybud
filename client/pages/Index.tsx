@@ -37,12 +37,12 @@ export default function Index() {
 
             {/* Navigation */}
             <nav className="hidden md:flex items-center gap-8">
-              <a
-                href="#features"
+              <Link
+                to="/features"
                 className="text-studybud-gray-600 hover:text-studybud-blue-500 transition-colors"
               >
                 Features
-              </a>
+              </Link>
               <a
                 href="#how-it-works"
                 className="text-studybud-gray-600 hover:text-studybud-blue-500 transition-colors"
