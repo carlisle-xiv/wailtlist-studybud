@@ -193,9 +193,7 @@ export default function Reviews() {
                   <h3 className="text-lg font-bold text-gray-900">
                     Dr. Maria Rodriguez
                   </h3>
-                  <p className="text-gray-600">
-                    Biology Professor, Stanford University
-                  </p>
+                  <p className="text-gray-600">Biology Professor</p>
                   <div className="flex mt-2">
                     {[...Array(5)].map((_, i) => (
                       <svg
