@@ -236,11 +236,6 @@ export default function Reviews() {
             {/* Emma Chen */}
             <div className="bg-gray-50 rounded-xl p-6">
               <div className="flex items-center mb-4">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/57beba2c4fe6a8b3c72add00db1b3755ffb37328?width=96"
-                  alt="Emma Chen"
-                  className="w-12 h-12 rounded-full mr-3"
-                />
                 <div>
                   <h4 className="font-bold text-gray-900">Emma Chen</h4>
                   <p className="text-sm text-gray-600">Pre-Med Student</p>
@@ -268,11 +263,6 @@ export default function Reviews() {
             {/* James Wilson */}
             <div className="bg-gray-50 rounded-xl p-6">
               <div className="flex items-center mb-4">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/5ce0de721385be05a183760880836860bd21c0c1?width=96"
-                  alt="James Wilson"
-                  className="w-12 h-12 rounded-full mr-3"
-                />
                 <div>
                   <h4 className="font-bold text-gray-900">James Wilson</h4>
                   <p className="text-sm text-gray-600">Engineering Student</p>
@@ -300,11 +290,6 @@ export default function Reviews() {
             {/* Sophie Martinez */}
             <div className="bg-gray-50 rounded-xl p-6">
               <div className="flex items-center mb-4">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/6f63bdd798dd3714fc3b3307fe9696def1c246a7?width=96"
-                  alt="Sophie Martinez"
-                  className="w-12 h-12 rounded-full mr-3"
-                />
                 <div>
                   <h4 className="font-bold text-gray-900">Sophie Martinez</h4>
                   <p className="text-sm text-gray-600">Psychology Major</p>
