@@ -486,14 +486,7 @@ export default function Features() {
 
       
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-studybud-gray-800 mb-4">
-              Choose Your Plan
-            </h2>
-            <p className="text-xl text-studybud-gray-600">
-              Start free, upgrade when you're ready
-            </p>
-          </div>
+          
 
           <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Free Plan */}
