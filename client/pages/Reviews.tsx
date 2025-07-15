@@ -153,16 +153,11 @@ export default function Reviews() {
             {/* Alex Thompson */}
             <div className="bg-white rounded-2xl p-8 shadow-xl">
               <div className="flex items-center mb-6">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/a9bf703b43cd8ca3228c2968139e8bf8ba2b833f?width=128"
-                  alt="Alex Thompson"
-                  className="w-16 h-16 rounded-full mr-4"
-                />
                 <div>
                   <h3 className="text-lg font-bold text-gray-900">
                     Alex Thompson
                   </h3>
-                  <p className="text-gray-600">Computer Science Student, MIT</p>
+                  <p className="text-gray-600">Computer Science Student</p>
                   <div className="flex mt-2">
                     {[...Array(5)].map((_, i) => (
                       <svg
@@ -194,11 +189,6 @@ export default function Reviews() {
             {/* Dr. Maria Rodriguez */}
             <div className="bg-white rounded-2xl p-8 shadow-xl">
               <div className="flex items-center mb-6">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/b930e482a608d169fe4560d3ec5f106c29018134?width=128"
-                  alt="Dr. Maria Rodriguez"
-                  className="w-16 h-16 rounded-full mr-4"
-                />
                 <div>
                   <h3 className="text-lg font-bold text-gray-900">
                     Dr. Maria Rodriguez
