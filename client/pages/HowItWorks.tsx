@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import WaitlistModal from "../components/WaitlistModal";
 
 export default function HowItWorks() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
