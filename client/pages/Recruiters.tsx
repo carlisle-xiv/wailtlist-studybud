@@ -72,7 +72,10 @@ const Recruiters: React.FC = () => {
 
             {/* Join Waitlist Button */}
             <div className="flex items-center space-x-4">
-              <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+              <button
+                onClick={openWaitlistModal}
+                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+              >
                 Join Our Waitlist
               </button>
             </div>
@@ -94,7 +97,10 @@ const Recruiters: React.FC = () => {
                 confidence.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors text-lg font-medium">
+                <button
+                  onClick={openWaitlistModal}
+                  className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors text-lg font-medium"
+                >
                   Join Our Waitlist
                 </button>
                 <button className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg hover:bg-blue-50 transition-colors text-lg font-medium">
@@ -508,7 +514,10 @@ const Recruiters: React.FC = () => {
             decisions
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-blue-50 transition-colors text-lg font-medium">
+            <button
+              onClick={openWaitlistModal}
+              className="bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-blue-50 transition-colors text-lg font-medium"
+            >
               Join Our Waitlist
             </button>
             <button className="border border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-blue-600 transition-colors text-lg font-medium">
