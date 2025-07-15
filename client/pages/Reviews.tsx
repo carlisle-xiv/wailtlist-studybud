@@ -671,6 +671,12 @@ export default function Reviews() {
           </div>
         </div>
       </footer>
+
+      {/* Waitlist Modal */}
+      <WaitlistModal
+        isOpen={isWaitlistModalOpen}
+        onClose={closeWaitlistModal}
+      />
     </div>
   );
 }
