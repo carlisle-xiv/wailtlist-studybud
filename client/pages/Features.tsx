@@ -160,7 +160,7 @@ export default function Features() {
               </div>
               <div className="flex justify-center">
                 <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/3939d4c75a9f544388dce9475ba8e1b33771394f?width=768"
+                  src="/images/Results Half.png"
                   alt="AI Feedback Interface"
                   className="w-96 h-96 rounded-2xl shadow-xl"
                 />
@@ -171,7 +171,7 @@ export default function Features() {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="flex justify-center lg:order-first">
                 <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/07ce9cd19be1db54c49af2213b1b2e1e5ecf0b70?width=768"
+                  src="/images/Improve.png"
                   alt="Performance Analytics Dashboard"
                   className="w-96 h-96 rounded-2xl shadow-xl"
                 />
@@ -290,7 +290,7 @@ export default function Features() {
               </div>
               <div className="flex justify-center">
                 <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/9b81727ecc6c5b8d774beaf840aa30d994a1634b?width=768"
+                  src="/images/Study Half.png"
                   alt="Personalized Study Plans Interface"
                   className="w-96 h-96 rounded-2xl shadow-xl"
                 />

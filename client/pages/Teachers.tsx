@@ -1,6 +1,21 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import WaitlistModal from "../components/WaitlistModal";
+import {
+  AlignLeft,
+  BarChart3,
+  BookOpen,
+  Edit3,
+  Flag,
+  GraduationCap,
+  HelpCircle,
+  Layers,
+  Lightbulb,
+  Target,
+  Upload,
+  Users,
+  Zap,
+} from "lucide-react";
 
 const Teachers = () => {
   const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
@@ -97,9 +112,9 @@ const Teachers = () => {
             </div>
             <div className="flex justify-center">
               <img
-                src="https://api.builder.io/api/v1/image/assets/TEMP/f97c06e0eb2308f72e068a87b41007b514db0629?width=768"
+                src="/images/Teacher Dashboard.png"
                 alt="Teacher using StudyBud AI in classroom"
-                className="w-96 h-96 rounded-2xl shadow-2xl"
+                className="w-[29rem] h-96 rounded-2xl shadow-2xl"
               />
             </div>
           </div>
@@ -183,9 +198,9 @@ const Teachers = () => {
         </div>
       </section>
 
-      {/* Rest of the content remains the same... */}
+      {/* Powerful Tools for Educators */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-20">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Powerful Tools for Educators
@@ -196,8 +211,197 @@ const Teachers = () => {
             </p>
           </div>
 
-          {/* Features sections continue with the same content... */}
-          {/* ... keeping the rest of the original content ... */}
+          {/* Create Courses & Upload Syllabus */}
+          <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
+            <div className="space-y-6">
+              <h3 className="text-3xl font-bold text-gray-900">
+                Create Courses & Upload Syllabus
+              </h3>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                Upload your curriculum and let our AI generate aligned
+                assessments. Create comprehensive courses with learning
+                objectives, materials, and assessments.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <Upload className="w-4 h-4 text-blue-600" />
+                  <span className="text-gray-700">
+                    Drag & drop syllabus upload
+                  </span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Edit3 className="w-4 h-4 text-blue-600" />
+                  <span className="text-gray-700">
+                    AI-generated question banks
+                  </span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <AlignLeft className="w-4 h-4 text-blue-600" />
+                  <span className="text-gray-700">
+                    Curriculum alignment tools
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <div className="w-96 h-96 rounded-2xl shadow-lg flex items-center justify-center">
+                <img
+                  src="/images/Course Creation.png"
+                  alt="Teacher using StudyBud AI in classroom"
+                  className="w-[29rem] h-96 rounded-2xl shadow-2xl"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Smart Assessment Creation */}
+          <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
+            <div className="flex justify-center lg:order-first">
+              <div className="w-96 h-96 rounded-2xl shadow-lg flex items-center justify-center">
+                <img
+                  src="/images/Gen-Exam.png"
+                  alt="Teacher using StudyBud AI in classroom"
+                  className="w-[29rem] h-96 rounded-2xl shadow-2xl"
+                />
+              </div>
+            </div>
+            <div className="space-y-6">
+              <h3 className="text-3xl font-bold text-gray-900">
+                Smart Assessment Creation
+              </h3>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                Build comprehensive assessments with multiple question types.
+                Our AI suggests questions based on learning objectives and
+                difficulty levels.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <HelpCircle className="w-4 h-4 text-cyan-600" />
+                  <span className="text-gray-700">
+                    Multiple question formats
+                  </span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Zap className="w-4 h-4 text-cyan-600" />
+                  <span className="text-gray-700">
+                    AI-powered question suggestions
+                  </span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Layers className="w-4 h-4 text-cyan-600" />
+                  <span className="text-gray-700">
+                    Difficulty level balancing
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Comprehensive Analytics */}
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-6">
+              <h3 className="text-3xl font-bold text-gray-900">
+                Comprehensive Analytics
+              </h3>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                Get detailed insights into class performance, individual student
+                progress, and curriculum effectiveness with real-time analytics.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <BarChart3 className="w-4 h-4 text-purple-600" />
+                  <span className="text-gray-700">
+                    Real-time performance tracking
+                  </span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <GraduationCap className="w-4 h-4 text-purple-600" />
+                  <span className="text-gray-700">
+                    Individual student insights
+                  </span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Flag className="w-4 h-4 text-purple-600" />
+                  <span className="text-gray-700">
+                    Early intervention alerts
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <div className="w-96 h-96 rounded-2xl shadow-lg flex items-center justify-center">
+                <img
+                  src="/images/Student-Performance.png"
+                  alt="Teacher using StudyBud AI in classroom"
+                  className="w-[29rem] h-96 rounded-2xl shadow-2xl"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Your Teaching Workflow, Simplified */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-20">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Your Teaching Workflow, Simplified
+            </h2>
+            <p className="text-xl text-gray-600">
+              From course creation to student success tracking
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <BookOpen className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-3">
+                1. Upload Content
+              </h3>
+              <p className="text-gray-600">
+                Upload your syllabus and course materials
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Edit3 className="w-8 h-8 text-green-600" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-3">
+                2. Create Assessments
+              </h3>
+              <p className="text-gray-600">
+                Build tests with AI-generated questions
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Users className="w-8 h-8 text-yellow-600" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-3">
+                3. Monitor Progress
+              </h3>
+              <p className="text-gray-600">
+                Track student performance in real-time
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Lightbulb className="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-3">
+                4. Provide Insights
+              </h3>
+              <p className="text-gray-600">
+                Share personalized feedback with students
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

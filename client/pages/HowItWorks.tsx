@@ -159,7 +159,7 @@ export default function HowItWorks() {
               </div>
               <div className="flex justify-center">
                 <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/72ad213a12b91c11e56e30cc34aeeededc79c732?width=768"
+                  src="/images/Exam shot 2.png"
                   alt="AI-Powered Exam Interface"
                   className="w-96 h-96 rounded-2xl shadow-xl"
                 />
@@ -170,7 +170,7 @@ export default function HowItWorks() {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="flex justify-center lg:order-first">
                 <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/c86856c7d2fd86a24cae000ef124640336cb426e?width=768"
+                  src="/images/Results.png"
                   alt="AI Report Dashboard"
                   className="w-96 h-96 rounded-2xl shadow-xl"
                 />
@@ -275,7 +275,7 @@ export default function HowItWorks() {
               </div>
               <div className="flex justify-center">
                 <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/0d6d98f2c9f2e863065e751b906c1b16c22323f7?width=768"
+                  src="/images/Improve Plan.png"
                   alt="Personalized Study Insights Interface"
                   className="w-96 h-96 rounded-2xl shadow-xl"
                 />
