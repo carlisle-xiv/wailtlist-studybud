@@ -42,6 +42,12 @@ export default function Features() {
                 For Teachers
               </Link>
               <Link
+                to="/recruiters"
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium"
+              >
+                For Recruiters
+              </Link>
+              <Link
                 to="/reviews"
                 className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium"
               >
