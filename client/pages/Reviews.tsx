@@ -413,16 +413,11 @@ export default function Reviews() {
             {/* Prof. John Anderson */}
             <div className="bg-white rounded-2xl p-8 shadow-xl">
               <div className="flex items-center mb-6">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/7fcd1f98cf662ff965e2708c4d6ea218afe9490c?width=128"
-                  alt="Prof. John Anderson"
-                  className="w-16 h-16 rounded-full mr-4"
-                />
                 <div>
                   <h3 className="text-lg font-bold text-gray-900">
                     Prof. John Anderson
                   </h3>
-                  <p className="text-gray-600">Mathematics Department, UCLA</p>
+                  <p className="text-gray-600">Mathematics Department</p>
                   <div className="flex mt-2">
                     {[...Array(5)].map((_, i) => (
                       <svg
@@ -453,11 +448,6 @@ export default function Reviews() {
             {/* Dr. Lisa Chang */}
             <div className="bg-white rounded-2xl p-8 shadow-xl">
               <div className="flex items-center mb-6">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/55505ea084430f4ed5ec71dfa13a5f42c027d459?width=128"
-                  alt="Dr. Lisa Chang"
-                  className="w-16 h-16 rounded-full mr-4"
-                />
                 <div>
                   <h3 className="text-lg font-bold text-gray-900">
                     Dr. Lisa Chang
