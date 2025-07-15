@@ -48,13 +48,10 @@ const Teachers = () => {
               </Link>
             </nav>
 
-            {/* Auth Buttons */}
-            <div className="flex items-center space-x-4">
-              <button className="text-gray-600 hover:text-gray-900 transition-colors">
-                Login
-              </button>
+            {/* CTA Button */}
+            <div className="flex items-center">
               <button className="bg-studybud-blue-500 text-white px-4 py-2 rounded-lg hover:bg-studybud-blue-600 transition-colors">
-                Sign Up
+                Join Our Waitlist
               </button>
             </div>
           </div>
