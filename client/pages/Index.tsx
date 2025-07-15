@@ -105,7 +105,10 @@ export default function Index() {
                 AI-powered insights to help you identify gaps and build
                 confidence for faster, smarter improvement.
               </p>
-              <button className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all">
+              <button
+                onClick={openWaitlistModal}
+                className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all"
+              >
                 Join Our Waitlist
               </button>
             </div>
