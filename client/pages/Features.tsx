@@ -39,7 +39,7 @@ export default function Features() {
                 How It Works
               </Link>
               <Link
-                to="/"
+                to="/teachers"
                 className="text-studybud-gray-600 hover:text-studybud-gray-800"
               >
                 For Teachers
