@@ -96,6 +96,12 @@ export default function Reviews() {
 
           {/* Stats */}
           <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12">
+            {/* Happy Students */}
+            <div className="text-center">
+              <div className="text-4xl font-bold text-cyan-500 mb-2">25K+</div>
+              <div className="text-gray-600">Happy Students</div>
+            </div>
+
             {/* Rating */}
             <div className="text-center">
               <div className="text-4xl font-bold text-blue-500 mb-2">4.9/5</div>
@@ -112,12 +118,6 @@ export default function Reviews() {
                 ))}
               </div>
               <div className="text-gray-600">Average Rating</div>
-            </div>
-
-            {/* Happy Students */}
-            <div className="text-center">
-              <div className="text-4xl font-bold text-cyan-500 mb-2">25K+</div>
-              <div className="text-gray-600">Happy Students</div>
             </div>
 
             {/* Educators */}
