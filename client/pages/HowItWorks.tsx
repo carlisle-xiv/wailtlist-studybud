@@ -48,10 +48,10 @@ export default function HowItWorks() {
                 For Teachers
               </Link>
               <Link
-                to="/reviews"
+                to="/recruiters"
                 className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium"
               >
-                Reviews
+                For Recruiters
               </Link>
             </nav>
 
