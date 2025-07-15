@@ -71,11 +71,8 @@ const Teachers = () => {
                 provide personalized feedback at scale. Transform your classroom
                 with StudyBud for educators.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div>
                 <button className="bg-gradient-to-r from-studybud-blue-500 to-cyan-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all">
-                  Join Our Waitlist
-                </button>
-                <button className="border-2 border-studybud-blue-500 text-studybud-blue-500 px-8 py-4 rounded-lg font-semibold hover:bg-studybud-blue-50 transition-colors">
                   Join Our Waitlist
                 </button>
               </div>
