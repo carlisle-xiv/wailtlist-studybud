@@ -13,7 +13,6 @@ interface FormData {
   schoolAddress: string;
   schoolCity: string;
   schoolCountry: string;
-  accountType: "student" | "teacher" | "admin" | "";
 }
 
 export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
