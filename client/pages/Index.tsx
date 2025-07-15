@@ -39,28 +39,28 @@ export default function Index() {
             <nav className="hidden md:flex space-x-8">
               <Link
                 to="/features"
-                className="text-studybud-gray-600 hover:text-studybud-blue-500 transition-colors"
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium"
               >
                 Features
               </Link>
-              <a
-                href="#how-it-works"
-                className="text-studybud-gray-600 hover:text-studybud-blue-500 transition-colors"
+              <Link
+                to="/how-it-works"
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium"
               >
                 How It Works
-              </a>
+              </Link>
               <Link
                 to="/teachers"
-                className="text-studybud-gray-600 hover:text-studybud-blue-500 transition-colors"
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium"
               >
                 For Teachers
               </Link>
-              <a
-                href="#reviews"
-                className="text-studybud-gray-600 hover:text-studybud-blue-500 transition-colors"
+              <Link
+                to="/reviews"
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium"
               >
                 Reviews
-              </a>
+              </Link>
             </nav>
 
             {/* Join Waitlist Button */}
