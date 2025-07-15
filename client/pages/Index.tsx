@@ -30,7 +30,7 @@ export default function Index() {
                 </svg>
               </div>
               <span className="text-xl font-bold text-studybud-gray-800">
-                StudyBud AI
+                StudyBud
               </span>
             </div>
 
@@ -109,7 +109,7 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-5 lg:px-20">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-studybud-gray-800 mb-4">
-              How StudyBud AI Works
+              How StudyBud Works
             </h2>
             <p className="text-xl text-studybud-gray-600">
               Three simple steps to transform your study experience
@@ -604,7 +604,7 @@ export default function Index() {
                     fill="#3B82F6"
                   />
                 </svg>
-                <span className="text-xl font-bold">StudyBud AI</span>
+                <span className="text-xl font-bold">StudyBud</span>
               </div>
               <p className="text-gray-400">
                 Empowering students with AI-powered learning insights.
