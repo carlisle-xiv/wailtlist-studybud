@@ -27,6 +27,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -36,17 +37,79 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
       ...prev,
       [name]: value,
     }));
+    // Clear error when user starts typing
+    if (submitError) {
+      setSubmitError(null);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const payload = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        schoolName: formData.schoolName,
+        schoolAddress: formData.schoolAddress,
+        schoolCity: formData.schoolCity,
+        schoolCountry: formData.schoolCountry,
+        timestamp: new Date().toISOString(),
+      };
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      console.log("Submitting to Google Apps Script:", payload);
+
+      // Submit to Google Apps Script - no Content-Type header to avoid CORS preflight
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbwRya3ERL4Rualnx4zPDVYXFdGTw02lkiJS2ltzCxwH1vWui24HSDLytJL-4yhUT11p/exec",
+        {
+          method: "POST",
+          body: JSON.stringify(payload),
+        },
+      );
+
+      console.log("Raw response object:", response);
+      console.log("Response status:", response.status);
+      console.log("Response statusText:", response.statusText);
+      console.log(
+        "Response headers:",
+        Object.fromEntries(response.headers.entries()),
+      );
+
+      const responseText = await response.text();
+      console.log("Response body:", responseText);
+
+      // Parse the response from Google Apps Script
+      let result;
+      try {
+        result = JSON.parse(responseText);
+      } catch (e) {
+        // If parsing fails, treat as success if status is OK
+        if (response.ok) {
+          result = { success: true };
+        } else {
+          throw new Error(`Invalid response: ${responseText}`);
+        }
+      }
+
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.error || `HTTP ${response.status}: ${responseText}`,
+        );
+      }
+
+      console.log("Successfully submitted to Google Sheets!");
+      // Success - show thank you message
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error("Detailed error submitting to waitlist:", error);
+      setSubmitError(`Error: ${error.message}. Please try again.`);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const resetModal = () => {
@@ -61,6 +124,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
     });
     setIsSubmitted(false);
     setIsSubmitting(false);
+    setSubmitError(null);
     onClose();
   };
 
@@ -108,6 +172,13 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                   Get early access to StudyBud and transform your learning
                   experience with AI-powered insights.
                 </p>
+
+                {/* Error Message */}
+                {submitError && (
+                  <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-md">
+                    <p className="text-sm text-red-600">{submitError}</p>
+                  </div>
+                )}
 
                 {/* Form */}
                 <form onSubmit={handleSubmit} className="space-y-4">
