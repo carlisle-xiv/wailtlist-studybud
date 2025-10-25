@@ -1,10 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import WaitlistModal from "../components/WaitlistModal";
+import AnimatedSection from "../components/AnimatedSection";
+import MagneticButton from "../components/MagneticButton";
+import GlassCard from "../components/GlassCard";
 
 export default function Index() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleFaq = (index: number) => {
     setExpandedFaq(expandedFaq === index ? null : index);
@@ -20,8 +34,12 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+      {/* Header with Glassmorphism */}
+      <motion.header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? "glass shadow-lg" : "bg-transparent"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-5 lg:px-20">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -75,257 +93,392 @@ export default function Index() {
 
             {/* Join Waitlist Button */}
             <div className="flex items-center">
-              <button
+              <motion.button
                 onClick={openWaitlistModal}
-                className="bg-studybud-blue-500 text-white px-6 py-2 rounded-lg hover:bg-studybud-blue-600 transition-colors font-semibold"
+                className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-6 py-2 rounded-lg font-semibold relative overflow-hidden group"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                Join Our Waitlist
-              </button>
+                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+                <span className="relative z-10">Join Our Waitlist</span>
+              </motion.button>
             </div>
           </div>
         </div>
-      </header>
+      </motion.header>
 
-      {/* Hero Section */}
-      <section className="pt-16 pb-20 bg-hero-gradient">
-        <div className="max-w-7xl mx-auto px-5 lg:px-20 py-24">
+      {/* Hero Section with Animated Mesh Gradient */}
+      <section className="relative pt-32 pb-20 overflow-hidden bg-mesh-gradient">
+        {/* Animated gradient orbs */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-500/30 rounded-full blur-3xl"
+            animate={{
+              x: [0, 50, 0],
+              y: [0, 30, 0],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl"
+            animate={{
+              x: [0, -50, 0],
+              y: [0, -30, 0],
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-5 lg:px-20 py-24 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
-                Study <span className="text-studybud-blue-500">Smarter</span>,
+            {/* Text content with staggered animation */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.15,
+                  },
+                },
+              }}
+              className="space-y-8"
+            >
+              <motion.h1
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                className="text-4xl lg:text-6xl font-bold leading-tight"
+              >
+                Study{" "}
+                <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                  Smarter
+                </span>
+                ,<br />
                 Improve, Excel.
-              </h1>
-              <p className="text-xl text-studybud-gray-600 leading-relaxed">
+              </motion.h1>
+              <motion.p
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                className="text-xl text-gray-700 leading-relaxed"
+              >
                 AI-powered insights to help you identify gaps and build
                 confidence for faster, smarter improvement.
-              </p>
-              <button
-                onClick={openWaitlistModal}
-                className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all"
+              </motion.p>
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
               >
-                Join Our Waitlist
-              </button>
-            </div>
-            <div className="flex justify-center">
-              <img
-                src="https://api.builder.io/api/v1/image/assets/TEMP/b9d87ff7096e7363cadcdab1ee73424662a96518?width=768"
-                alt="StudyBud AI Dashboard"
-                className="w-96 h-96 rounded-2xl shadow-2xl"
-              />
-            </div>
+                <MagneticButton onClick={openWaitlistModal}>
+                  Join Our Waitlist
+                </MagneticButton>
+              </motion.div>
+            </motion.div>
+
+            {/* Dashboard image with 3D tilt and floating animation */}
+            <motion.div
+              className="flex justify-center"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <motion.div
+                animate={{
+                  y: [0, -20, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                whileHover={{ scale: 1.05, rotateY: 5 }}
+                className="relative"
+              >
+                <img
+                  src="https://api.builder.io/api/v1/image/assets/TEMP/b9d87ff7096e7363cadcdab1ee73424662a96518?width=768"
+                  alt="StudyBud AI Dashboard"
+                  className="w-96 h-96 rounded-2xl shadow-2xl"
+                />
+                {/* Glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-2xl blur-xl -z-10" />
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* How StudyBud AI Works */}
-      <section id="how-it-works" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-5 lg:px-20">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-studybud-gray-800 mb-4">
+      <section
+        id="how-it-works"
+        className="py-20 bg-white relative overflow-hidden"
+      >
+        {/* Decorative background elements */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-100 rounded-full blur-3xl opacity-30" />
+        <div className="absolute bottom-20 right-10 w-72 h-72 bg-purple-100 rounded-full blur-3xl opacity-30" />
+
+        <div className="max-w-7xl mx-auto px-5 lg:px-20 relative z-10">
+          <AnimatedSection className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
               How StudyBud Works
             </h2>
-            <p className="text-xl text-studybud-gray-600">
+            <p className="text-xl text-gray-600">
               Three simple steps to transform your study experience
             </p>
-          </div>
+          </AnimatedSection>
 
           <div className="grid md:grid-cols-3 gap-12">
             {/* Step 1 */}
-            <div className="text-center">
-              <div className="w-20 h-20 bg-step-blue rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 25 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+            <AnimatedSection delay={0.1}>
+              <GlassCard className="text-center">
+                <motion.div
+                  className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
                 >
-                  <path
-                    d="M22.7625 1.01724C21.7359 -0.00932619 20.0766 -0.00932619 19.05 1.01724L17.6391 2.42349L22.2281 7.01255L23.6391 5.60161C24.6656 4.57505 24.6656 2.91567 23.6391 1.88911L22.7625 1.01724ZM8.7375 11.3297C8.45156 11.6157 8.23125 11.9672 8.10469 12.3563L6.71719 16.5188C6.58125 16.9219 6.68906 17.3672 6.98906 17.6719C7.28906 17.9766 7.73438 18.0797 8.14219 17.9438L12.3047 16.5563C12.6891 16.4297 13.0406 16.2094 13.3312 15.9235L21.1734 8.07661L16.5797 3.48286L8.7375 11.3297ZM5.15625 3.00005C2.67188 3.00005 0.65625 5.01567 0.65625 7.50005V19.5C0.65625 21.9844 2.67188 24 5.15625 24H17.1562C19.6406 24 21.6562 21.9844 21.6562 19.5V15C21.6562 14.1704 20.9859 13.5 20.1562 13.5C19.3266 13.5 18.6562 14.1704 18.6562 15V19.5C18.6562 20.3297 17.9859 21 17.1562 21H5.15625C4.32656 21 3.65625 20.3297 3.65625 19.5V7.50005C3.65625 6.67036 4.32656 6.00005 5.15625 6.00005H9.65625C10.4859 6.00005 11.1562 5.32974 11.1562 4.50005C11.1562 3.67036 10.4859 3.00005 9.65625 3.00005H5.15625Z"
-                    fill="white"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-studybud-gray-800 mb-4">
-                Take an Exam
-              </h3>
-              <p className="text-studybud-gray-600">
-                Choose from hundreds of practice tests tailored to your course
-                and difficulty level.
-              </p>
-            </div>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 25 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M22.7625 1.01724C21.7359 -0.00932619 20.0766 -0.00932619 19.05 1.01724L17.6391 2.42349L22.2281 7.01255L23.6391 5.60161C24.6656 4.57505 24.6656 2.91567 23.6391 1.88911L22.7625 1.01724ZM8.7375 11.3297C8.45156 11.6157 8.23125 11.9672 8.10469 12.3563L6.71719 16.5188C6.58125 16.9219 6.68906 17.3672 6.98906 17.6719C7.28906 17.9766 7.73438 18.0797 8.14219 17.9438L12.3047 16.5563C12.6891 16.4297 13.0406 16.2094 13.3312 15.9235L21.1734 8.07661L16.5797 3.48286L8.7375 11.3297ZM5.15625 3.00005C2.67188 3.00005 0.65625 5.01567 0.65625 7.50005V19.5C0.65625 21.9844 2.67188 24 5.15625 24H17.1562C19.6406 24 21.6562 21.9844 21.6562 19.5V15C21.6562 14.1704 20.9859 13.5 20.1562 13.5C19.3266 13.5 18.6562 14.1704 18.6562 15V19.5C18.6562 20.3297 17.9859 21 17.1562 21H5.15625C4.32656 21 3.65625 20.3297 3.65625 19.5V7.50005C3.65625 6.67036 4.32656 6.00005 5.15625 6.00005H9.65625C10.4859 6.00005 11.1562 5.32974 11.1562 4.50005C11.1562 3.67036 10.4859 3.00005 9.65625 3.00005H5.15625Z"
+                      fill="white"
+                    />
+                  </svg>
+                </motion.div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Take an Exam
+                </h3>
+                <p className="text-gray-600">
+                  Choose from hundreds of practice tests tailored to your course
+                  and difficulty level.
+                </p>
+              </GlassCard>
+            </AnimatedSection>
 
             {/* Step 2 */}
-            <div className="text-center">
-              <div className="w-20 h-20 bg-step-cyan rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 25 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+            <AnimatedSection delay={0.2}>
+              <GlassCard className="text-center">
+                <motion.div
+                  className="w-20 h-20 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-6"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
                 >
-                  <path
-                    d="M3.98438 3C3.98438 2.17031 3.31406 1.5 2.48438 1.5C1.65469 1.5 0.984375 2.17031 0.984375 3V18.75C0.984375 20.8219 2.6625 22.5 4.73438 22.5H23.4844C24.3141 22.5 24.9844 21.8297 24.9844 21C24.9844 20.1703 24.3141 19.5 23.4844 19.5H4.73438C4.32188 19.5 3.98438 19.1625 3.98438 18.75V3ZM23.0438 7.05938C23.6297 6.47344 23.6297 5.52188 23.0438 4.93594C22.4578 4.35 21.5062 4.35 20.9203 4.93594L15.9844 9.87656L13.2938 7.18594C12.7078 6.6 11.7563 6.6 11.1703 7.18594L5.92031 12.4359C5.33438 13.0219 5.33438 13.9734 5.92031 14.5594C6.50625 15.1453 7.45781 15.1453 8.04375 14.5594L12.2344 10.3734L14.925 13.0641C15.5109 13.65 16.4625 13.65 17.0484 13.0641L23.0484 7.06406L23.0438 7.05938Z"
-                    fill="white"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-studybud-gray-800 mb-4">
-                Get an AI Report
-              </h3>
-              <p className="text-studybud-gray-600">
-                Receive detailed analysis of your performance with AI-powered
-                insights and recommendations.
-              </p>
-            </div>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 25 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M3.98438 3C3.98438 2.17031 3.31406 1.5 2.48438 1.5C1.65469 1.5 0.984375 2.17031 0.984375 3V18.75C0.984375 20.8219 2.6625 22.5 4.73438 22.5H23.4844C24.3141 22.5 24.9844 21.8297 24.9844 21C24.9844 20.1703 24.3141 19.5 23.4844 19.5H4.73438C4.32188 19.5 3.98438 19.1625 3.98438 18.75V3ZM23.0438 7.05938C23.6297 6.47344 23.6297 5.52188 23.0438 4.93594C22.4578 4.35 21.5062 4.35 20.9203 4.93594L15.9844 9.87656L13.2938 7.18594C12.7078 6.6 11.7563 6.6 11.1703 7.18594L5.92031 12.4359C5.33438 13.0219 5.33438 13.9734 5.92031 14.5594C6.50625 15.1453 7.45781 15.1453 8.04375 14.5594L12.2344 10.3734L14.925 13.0641C15.5109 13.65 16.4625 13.65 17.0484 13.0641L23.0484 7.06406L23.0438 7.05938Z"
+                      fill="white"
+                    />
+                  </svg>
+                </motion.div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Get an AI Report
+                </h3>
+                <p className="text-gray-600">
+                  Receive detailed analysis of your performance with AI-powered
+                  insights and recommendations.
+                </p>
+              </GlassCard>
+            </AnimatedSection>
 
             {/* Step 3 */}
-            <div className="text-center">
-              <div className="w-20 h-20 bg-step-purple rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 25 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+            <AnimatedSection delay={0.3}>
+              <GlassCard className="text-center">
+                <motion.div
+                  className="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
                 >
-                  <path
-                    d="M7.66875 18.0423L6.22031 16.5938C5.82187 16.1954 5.68125 15.6188 5.85937 15.0845C6 14.6673 6.1875 14.1235 6.4125 13.5001H1.45312C1.05 13.5001 0.675 13.2845 0.473437 12.9329C0.271875 12.5813 0.276562 12.1501 0.482812 11.8032L2.94375 7.65476C3.55312 6.6282 4.65469 6.00008 5.84531 6.00008H9.70312C9.81563 5.81258 9.92812 5.63914 10.0406 5.47039C13.8797 -0.192112 19.5984 -0.379612 23.0109 0.248513C23.5547 0.346951 23.9766 0.773513 24.0797 1.31726C24.7078 4.73445 24.5156 10.4485 18.8578 14.2876C18.6937 14.4001 18.5156 14.5126 18.3281 14.6251V18.4829C18.3281 19.6735 17.7 20.7798 16.6734 21.3845L12.525 23.8454C12.1781 24.0516 11.7469 24.0563 11.3953 23.8548C11.0438 23.6532 10.8281 23.2829 10.8281 22.8751V17.8501C10.1672 18.0798 9.59062 18.2673 9.15469 18.4079C8.62969 18.5766 8.05781 18.4313 7.66406 18.0423H7.66875ZM18.3281 7.87508C18.8254 7.87508 19.3023 7.67753 19.6539 7.3259C20.0056 6.97427 20.2031 6.49736 20.2031 6.00008C20.2031 5.50279 20.0056 5.02588 19.6539 4.67425C19.3023 4.32262 18.8254 4.12508 18.3281 4.12508C17.8308 4.12508 17.3539 4.32262 17.0023 4.67425C16.6507 5.02588 16.4531 5.50279 16.4531 6.00008C16.4531 6.49736 16.6507 6.97427 17.0023 7.3259C17.3539 7.67753 17.8308 7.87508 18.3281 7.87508Z"
-                    fill="white"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-studybud-gray-800 mb-4">
-                Improve with Insights
-              </h3>
-              <p className="text-studybud-gray-600">
-                Follow personalized study plans and practice questions to boost
-                your exam performance.
-              </p>
-            </div>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 25 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7.66875 18.0423L6.22031 16.5938C5.82187 16.1954 5.68125 15.6188 5.85937 15.0845C6 14.6673 6.1875 14.1235 6.4125 13.5001H1.45312C1.05 13.5001 0.675 13.2845 0.473437 12.9329C0.271875 12.5813 0.276562 12.1501 0.482812 11.8032L2.94375 7.65476C3.55312 6.6282 4.65469 6.00008 5.84531 6.00008H9.70312C9.81563 5.81258 9.92812 5.63914 10.0406 5.47039C13.8797 -0.192112 19.5984 -0.379612 23.0109 0.248513C23.5547 0.346951 23.9766 0.773513 24.0797 1.31726C24.7078 4.73445 24.5156 10.4485 18.8578 14.2876C18.6937 14.4001 18.5156 14.5126 18.3281 14.6251V18.4829C18.3281 19.6735 17.7 20.7798 16.6734 21.3845L12.525 23.8454C12.1781 24.0516 11.7469 24.0563 11.3953 23.8548C11.0438 23.6532 10.8281 23.2829 10.8281 22.8751V17.8501C10.1672 18.0798 9.59062 18.2673 9.15469 18.4079C8.62969 18.5766 8.05781 18.4313 7.66406 18.0423H7.66875ZM18.3281 7.87508C18.8254 7.87508 19.3023 7.67753 19.6539 7.3259C20.0056 6.97427 20.2031 6.49736 20.2031 6.00008C20.2031 5.50279 20.0056 5.02588 19.6539 4.67425C19.3023 4.32262 18.8254 4.12508 18.3281 4.12508C17.8308 4.12508 17.3539 4.32262 17.0023 4.67425C16.6507 5.02588 16.4531 5.50279 16.4531 6.00008C16.4531 6.49736 16.6507 6.97427 17.0023 7.3259C17.3539 7.67753 17.8308 7.87508 18.3281 7.87508Z"
+                      fill="white"
+                    />
+                  </svg>
+                </motion.div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Improve with Insights
+                </h3>
+                <p className="text-gray-600">
+                  Follow personalized study plans and practice questions to
+                  boost your exam performance.
+                </p>
+              </GlassCard>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 bg-studybud-gray-50">
+      <section
+        id="features"
+        className="py-20 bg-gradient-to-b from-gray-50 to-white"
+      >
         <div className="max-w-7xl mx-auto px-5 lg:px-20">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-studybud-gray-800 mb-4">
+          <AnimatedSection className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Powerful Features for Smart Learning
             </h2>
-            <p className="text-xl text-studybud-gray-600">
+            <p className="text-xl text-gray-600">
               Everything you need to excel in your studies
             </p>
-          </div>
+          </AnimatedSection>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Feature 1 */}
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <div className="w-16 h-16 bg-studybud-blue-background rounded-lg flex items-center justify-center mb-6">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+            <AnimatedSection delay={0.1}>
+              <GlassCard>
+                <motion.div
+                  className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center mb-6"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
                 >
-                  <path
-                    d="M8.625 0C10.0734 0 11.25 1.17656 11.25 2.625V21.375C11.25 22.8234 10.0734 24 8.625 24C7.27031 24 6.15469 22.9734 6.01406 21.6516C5.77031 21.7172 5.5125 21.75 5.25 21.75C3.59531 21.75 2.25 20.4047 2.25 18.75C2.25 18.4031 2.31094 18.0656 2.41875 17.7562C1.00312 17.2219 0 15.8531 0 14.25C0 12.7547 0.876562 11.4609 2.14687 10.8609C1.73906 10.35 1.5 9.70312 1.5 9C1.5 7.56094 2.5125 6.36094 3.8625 6.06562C3.7875 5.80781 3.75 5.53125 3.75 5.25C3.75 3.84844 4.71563 2.66719 6.01406 2.33906C6.15469 1.02656 7.27031 0 8.625 0ZM15.375 0C16.7297 0 17.8406 1.02656 17.9859 2.33906C19.2891 2.66719 20.25 3.84375 20.25 5.25C20.25 5.53125 20.2125 5.80781 20.1375 6.06562C21.4875 6.35625 22.5 7.56094 22.5 9C22.5 9.70312 22.2609 10.35 21.8531 10.8609C23.1234 11.4609 24 12.7547 24 14.25C24 15.8531 22.9969 17.2219 21.5812 17.7562C21.6891 18.0656 21.75 18.4031 21.75 18.75C21.75 20.4047 20.4047 21.75 18.75 21.75C18.4875 21.75 18.2297 21.7172 17.9859 21.6516C17.8453 22.9734 16.7297 24 15.375 24C13.9266 24 12.75 22.8234 12.75 21.375V2.625C12.75 1.17656 13.9266 0 15.375 0Z"
-                    fill="#3B82F6"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-studybud-gray-800 mb-4">
-                AI-Generated
-                <br />
-                Feedback
-              </h3>
-              <p className="text-studybud-gray-600">
-                Get intelligent feedback on your answers with detailed
-                explanations and improvement tips.
-              </p>
-            </div>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8.625 0C10.0734 0 11.25 1.17656 11.25 2.625V21.375C11.25 22.8234 10.0734 24 8.625 24C7.27031 24 6.15469 22.9734 6.01406 21.6516C5.77031 21.7172 5.5125 21.75 5.25 21.75C3.59531 21.75 2.25 20.4047 2.25 18.75C2.25 18.4031 2.31094 18.0656 2.41875 17.7562C1.00312 17.2219 0 15.8531 0 14.25C0 12.7547 0.876562 11.4609 2.14687 10.8609C1.73906 10.35 1.5 9.70312 1.5 9C1.5 7.56094 2.5125 6.36094 3.8625 6.06562C3.7875 5.80781 3.75 5.53125 3.75 5.25C3.75 3.84844 4.71563 2.66719 6.01406 2.33906C6.15469 1.02656 7.27031 0 8.625 0ZM15.375 0C16.7297 0 17.8406 1.02656 17.9859 2.33906C19.2891 2.66719 20.25 3.84375 20.25 5.25C20.25 5.53125 20.2125 5.80781 20.1375 6.06562C21.4875 6.35625 22.5 7.56094 22.5 9C22.5 9.70312 22.2609 10.35 21.8531 10.8609C23.1234 11.4609 24 12.7547 24 14.25C24 15.8531 22.9969 17.2219 21.5812 17.7562C21.6891 18.0656 21.75 18.4031 21.75 18.75C21.75 20.4047 20.4047 21.75 18.75 21.75C18.4875 21.75 18.2297 21.7172 17.9859 21.6516C17.8453 22.9734 16.7297 24 15.375 24C13.9266 24 12.75 22.8234 12.75 21.375V2.625C12.75 1.17656 13.9266 0 15.375 0Z"
+                      fill="white"
+                    />
+                  </svg>
+                </motion.div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  AI-Generated
+                  <br />
+                  Feedback
+                </h3>
+                <p className="text-gray-600">
+                  Get intelligent feedback on your answers with detailed
+                  explanations and improvement tips.
+                </p>
+              </GlassCard>
+            </AnimatedSection>
 
             {/* Feature 2 */}
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <div className="w-16 h-16 bg-studybud-cyan-background rounded-lg flex items-center justify-center mb-6">
-                <svg
-                  width="27"
-                  height="24"
-                  viewBox="0 0 28 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+            <AnimatedSection delay={0.2}>
+              <GlassCard>
+                <motion.div
+                  className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-lg flex items-center justify-center mb-6"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
                 >
-                  <path
-                    d="M14.75 11.25V0.778125C14.75 0.35625 15.0781 0 15.5 0C21.2984 0 26 4.70156 26 10.5C26 10.9219 25.6438 11.25 25.2219 11.25H14.75ZM2 12.75C2 7.06406 6.22344 2.35781 11.7031 1.60781C12.1344 1.54688 12.5 1.89375 12.5 2.32969V13.5L19.8359 20.8359C20.15 21.15 20.1266 21.6656 19.7656 21.9188C17.9281 23.2313 15.6781 24 13.25 24C7.03906 24 2 18.9656 2 12.75ZM26.675 13.5C27.1109 13.5 27.4531 13.8656 27.3969 14.2969C27.0359 16.9172 25.775 19.2469 23.9328 20.9672C23.6516 21.2297 23.2109 21.2109 22.9391 20.9344L15.5 13.5H26.675Z"
-                    fill="#06B6D4"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-studybud-gray-800 mb-4">
-                Performance
-                <br />
-                Analysis
-              </h3>
-              <p className="text-studybud-gray-600">
-                Track your progress across topics and identify areas that need
-                more attention.
-              </p>
-            </div>
+                  <svg
+                    width="27"
+                    height="24"
+                    viewBox="0 0 28 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M14.75 11.25V0.778125C14.75 0.35625 15.0781 0 15.5 0C21.2984 0 26 4.70156 26 10.5C26 10.9219 25.6438 11.25 25.2219 11.25H14.75ZM2 12.75C2 7.06406 6.22344 2.35781 11.7031 1.60781C12.1344 1.54688 12.5 1.89375 12.5 2.32969V13.5L19.8359 20.8359C20.15 21.15 20.1266 21.6656 19.7656 21.9188C17.9281 23.2313 15.6781 24 13.25 24C7.03906 24 2 18.9656 2 12.75ZM26.675 13.5C27.1109 13.5 27.4531 13.8656 27.3969 14.2969C27.0359 16.9172 25.775 19.2469 23.9328 20.9672C23.6516 21.2297 23.2109 21.2109 22.9391 20.9344L15.5 13.5H26.675Z"
+                      fill="white"
+                    />
+                  </svg>
+                </motion.div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  Performance
+                  <br />
+                  Analysis
+                </h3>
+                <p className="text-gray-600">
+                  Track your progress across topics and identify areas that need
+                  more attention.
+                </p>
+              </GlassCard>
+            </AnimatedSection>
 
             {/* Feature 3 */}
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <div className="w-16 h-16 bg-studybud-purple-background rounded-lg flex items-center justify-center mb-6">
-                <svg
-                  width="18"
-                  height="24"
-                  viewBox="0 0 18 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+            <AnimatedSection delay={0.3}>
+              <GlassCard>
+                <motion.div
+                  className="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg flex items-center justify-center mb-6"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
                 >
-                  <path
-                    d="M12.75 18C13.2 16.5047 14.1328 15.2297 15.0563 13.9594C15.3 13.6266 15.5438 13.2937 15.7781 12.9562C16.7063 11.6203 17.25 10.0031 17.25 8.25469C17.25 3.69375 13.5562 0 9 0C4.44375 0 0.75 3.69375 0.75 8.25C0.75 9.99844 1.29375 11.6203 2.22188 12.9516C2.45625 13.2891 2.7 13.6219 2.94375 13.9547C3.87187 15.225 4.80469 16.5047 5.25 17.9953H12.75V18ZM9 24C11.0719 24 12.75 22.3219 12.75 20.25V19.5H5.25V20.25C5.25 22.3219 6.92812 24 9 24ZM5.25 8.25C5.25 8.6625 4.9125 9 4.5 9C4.0875 9 3.75 8.6625 3.75 8.25C3.75 5.34844 6.09844 3 9 3C9.4125 3 9.75 3.3375 9.75 3.75C9.75 4.1625 9.4125 4.5 9 4.5C6.92812 4.5 5.25 6.17812 5.25 8.25Z"
-                    fill="#8B5CF6"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-studybud-gray-800 mb-4">
-                Study Suggestions
-              </h3>
-              <p className="text-studybud-gray-600">
-                Receive personalized study recommendations and practice
-                questions based on your weaknesses.
-              </p>
-            </div>
+                  <svg
+                    width="18"
+                    height="24"
+                    viewBox="0 0 18 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12.75 18C13.2 16.5047 14.1328 15.2297 15.0563 13.9594C15.3 13.6266 15.5438 13.2937 15.7781 12.9562C16.7063 11.6203 17.25 10.0031 17.25 8.25469C17.25 3.69375 13.5562 0 9 0C4.44375 0 0.75 3.69375 0.75 8.25C0.75 9.99844 1.29375 11.6203 2.22188 12.9516C2.45625 13.2891 2.7 13.6219 2.94375 13.9547C3.87187 15.225 4.80469 16.5047 5.25 17.9953H12.75V18ZM9 24C11.0719 24 12.75 22.3219 12.75 20.25V19.5H5.25V20.25C5.25 22.3219 6.92812 24 9 24ZM5.25 8.25C5.25 8.6625 4.9125 9 4.5 9C4.0875 9 3.75 8.6625 3.75 8.25C3.75 5.34844 6.09844 3 9 3C9.4125 3 9.75 3.3375 9.75 3.75C9.75 4.1625 9.4125 4.5 9 4.5C6.92812 4.5 5.25 6.17812 5.25 8.25Z"
+                      fill="white"
+                    />
+                  </svg>
+                </motion.div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  Study Suggestions
+                </h3>
+                <p className="text-gray-600">
+                  Receive personalized study recommendations and practice
+                  questions based on your weaknesses.
+                </p>
+              </GlassCard>
+            </AnimatedSection>
 
             {/* Feature 4 */}
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <div className="w-16 h-16 bg-studybud-green-background rounded-lg flex items-center justify-center mb-6">
-                <svg
-                  width="30"
-                  height="24"
-                  viewBox="0 0 30 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+            <AnimatedSection delay={0.4}>
+              <GlassCard>
+                <motion.div
+                  className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center mb-6"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
                 >
-                  <path
-                    d="M7.5 3C7.5 1.34531 8.84531 0 10.5 0H27C28.6547 0 30 1.34531 30 3V16.5C30 18.1547 28.6547 19.5 27 19.5H15.7875C15.2344 18.3047 14.3859 17.2734 13.3312 16.5H18V15C18 14.1703 18.6703 13.5 19.5 13.5H22.5C23.3297 13.5 24 14.1703 24 15V16.5H27V3H10.5V5.30156C9.61875 4.79063 8.59219 4.5 7.5 4.5V3ZM7.5 6C8.09095 6 8.67611 6.1164 9.22208 6.34254C9.76804 6.56869 10.2641 6.90016 10.682 7.31802C11.0998 7.73588 11.4313 8.23196 11.6575 8.77792C11.8836 9.32389 12 9.90905 12 10.5C12 11.0909 11.8836 11.6761 11.6575 12.2221C11.4313 12.768 11.0998 13.2641 10.682 13.682C10.2641 14.0998 9.76804 14.4313 9.22208 14.6575C8.67611 14.8836 8.09095 15 7.5 15C6.90905 15 6.32389 14.8836 5.77792 14.6575C5.23196 14.4313 4.73588 14.0998 4.31802 13.682C3.90016 13.2641 3.56869 12.768 3.34254 12.2221C3.1164 11.6761 3 11.0909 3 10.5C3 9.90905 3.1164 9.32389 3.34254 8.77792C3.56869 8.23196 3.90016 7.73588 4.31802 7.31802C4.73588 6.90016 5.23196 6.56869 5.77792 6.34254C6.32389 6.1164 6.90905 6 7.5 6ZM6.24844 16.5H8.74688C12.2016 16.5 15 19.2984 15 22.7484C15 23.4375 14.4422 24 13.7484 24H1.25156C0.557813 24 0 23.4422 0 22.7484C0 19.2984 2.79844 16.5 6.24844 16.5Z"
-                    fill="#16A34A"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-studybud-gray-800 mb-4">
-                Teacher-Created
-                <br />
-                Content
-              </h3>
-              <p className="text-studybud-gray-600">
-                Access exams created by real teachers aligned with your course
-                curriculum.
-              </p>
-            </div>
+                  <svg
+                    width="30"
+                    height="24"
+                    viewBox="0 0 30 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7.5 3C7.5 1.34531 8.84531 0 10.5 0H27C28.6547 0 30 1.34531 30 3V16.5C30 18.1547 28.6547 19.5 27 19.5H15.7875C15.2344 18.3047 14.3859 17.2734 13.3312 16.5H18V15C18 14.1703 18.6703 13.5 19.5 13.5H22.5C23.3297 13.5 24 14.1703 24 15V16.5H27V3H10.5V5.30156C9.61875 4.79063 8.59219 4.5 7.5 4.5V3ZM7.5 6C8.09095 6 8.67611 6.1164 9.22208 6.34254C9.76804 6.56869 10.2641 6.90016 10.682 7.31802C11.0998 7.73588 11.4313 8.23196 11.6575 8.77792C11.8836 9.32389 12 9.90905 12 10.5C12 11.0909 11.8836 11.6761 11.6575 12.2221C11.4313 12.768 11.0998 13.2641 10.682 13.682C10.2641 14.0998 9.76804 14.4313 9.22208 14.6575C8.67611 14.8836 8.09095 15 7.5 15C6.90905 15 6.32389 14.8836 5.77792 14.6575C5.23196 14.4313 4.73588 14.0998 4.31802 13.682C3.90016 13.2641 3.56869 12.768 3.34254 12.2221C3.1164 11.6761 3 11.0909 3 10.5C3 9.90905 3.1164 9.32389 3.34254 8.77792C3.56869 8.23196 3.90016 7.73588 4.31802 7.31802C4.73588 6.90016 5.23196 6.56869 5.77792 6.34254C6.32389 6.1164 6.90905 6 7.5 6ZM6.24844 16.5H8.74688C12.2016 16.5 15 19.2984 15 22.7484C15 23.4375 14.4422 24 13.7484 24H1.25156C0.557813 24 0 23.4422 0 22.7484C0 19.2984 2.79844 16.5 6.24844 16.5Z"
+                      fill="#16A34A"
+                    />
+                  </svg>
+                </motion.div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  Teacher-Created
+                  <br />
+                  Content
+                </h3>
+                <p className="text-gray-600">
+                  Access exams created by real teachers aligned with your course
+                  curriculum.
+                </p>
+              </GlassCard>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -479,106 +632,180 @@ export default function Index() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-cta-gradient">
-        <div className="max-w-4xl mx-auto px-5 lg:px-20 text-center">
+      <section className="relative py-20 overflow-hidden bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">
+        {/* Animated background patterns */}
+        <div className="absolute inset-0">
+          <motion.div
+            className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"
+            animate={{
+              x: [0, 100, 0],
+              y: [0, 50, 0],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+          <motion.div
+            className="absolute bottom-10 right-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"
+            animate={{
+              x: [0, -100, 0],
+              y: [0, -50, 0],
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        </div>
+
+        <AnimatedSection className="max-w-4xl mx-auto px-5 lg:px-20 text-center relative z-10">
           <h2 className="text-4xl font-bold text-white mb-4">
             Ready to Transform Your Study Experience?
           </h2>
-          <p className="text-xl text-purple-100 mb-8">
+          <p className="text-xl text-white/90 mb-8">
             Join thousands of students who are already studying smarter with
             AI-powered insights.
           </p>
 
           <div className="flex justify-center">
-            <button
-              onClick={openWaitlistModal}
-              className="bg-white text-studybud-blue-500 px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all"
-            >
+            <MagneticButton onClick={openWaitlistModal} variant="secondary">
               Join Our Waitlist
-            </button>
+            </MagneticButton>
           </div>
-        </div>
+        </AnimatedSection>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-studybud-gray-50">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-5 lg:px-20">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-studybud-gray-800">
+          <AnimatedSection className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900">
               Frequently Asked Questions
             </h2>
-          </div>
+          </AnimatedSection>
 
-          <div className="space-y-6">
+          <div className="space-y-4">
             {/* FAQ Item 1 */}
-            <div className="bg-white rounded-lg shadow-sm">
-              <button
-                className="w-full p-6 text-left flex justify-between items-center"
-                onClick={() => toggleFaq(0)}
+            <AnimatedSection delay={0.1}>
+              <motion.div
+                className="glass glass-hover rounded-xl overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
               >
-                <h3 className="text-lg font-semibold text-studybud-gray-800">
-                  How accurate is the AI feedback?
-                </h3>
-                <span className="text-2xl text-studybud-gray-400">
-                  {expandedFaq === 0 ? "−" : "+"}
-                </span>
-              </button>
-              {expandedFaq === 0 && (
-                <div className="px-6 pb-6">
-                  <p className="text-studybud-gray-600">
-                    Our AI is trained on millions of student responses and
-                    provides 95% accurate feedback, continuously improving with
-                    each interaction.
-                  </p>
-                </div>
-              )}
-            </div>
+                <button
+                  className="w-full p-6 text-left flex justify-between items-center"
+                  onClick={() => toggleFaq(0)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    How accurate is the AI feedback?
+                  </h3>
+                  <motion.span
+                    className="text-2xl text-gray-600"
+                    animate={{ rotate: expandedFaq === 0 ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {expandedFaq === 0 ? "−" : "+"}
+                  </motion.span>
+                </button>
+                <motion.div
+                  initial={false}
+                  animate={{ height: expandedFaq === 0 ? "auto" : 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-600">
+                      Our AI is trained on millions of student responses and
+                      provides 95% accurate feedback, continuously improving
+                      with each interaction.
+                    </p>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </AnimatedSection>
 
             {/* FAQ Item 2 */}
-            <div className="bg-white rounded-lg shadow-sm">
-              <button
-                className="w-full p-6 text-left flex justify-between items-center"
-                onClick={() => toggleFaq(1)}
+            <AnimatedSection delay={0.2}>
+              <motion.div
+                className="glass glass-hover rounded-xl overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
               >
-                <h3 className="text-lg font-semibold text-studybud-gray-800">
-                  Can I use this for any subject?
-                </h3>
-                <span className="text-2xl text-studybud-gray-400">
-                  {expandedFaq === 1 ? "−" : "+"}
-                </span>
-              </button>
-              {expandedFaq === 1 && (
-                <div className="px-6 pb-6">
-                  <p className="text-studybud-gray-600">
-                    Yes! We support over 50 subjects including STEM, humanities,
-                    languages, and professional certification exams.
-                  </p>
-                </div>
-              )}
-            </div>
+                <button
+                  className="w-full p-6 text-left flex justify-between items-center"
+                  onClick={() => toggleFaq(1)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Can I use this for any subject?
+                  </h3>
+                  <motion.span
+                    className="text-2xl text-gray-600"
+                    animate={{ rotate: expandedFaq === 1 ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {expandedFaq === 1 ? "−" : "+"}
+                  </motion.span>
+                </button>
+                <motion.div
+                  initial={false}
+                  animate={{ height: expandedFaq === 1 ? "auto" : 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-600">
+                      Yes! We support over 50 subjects including STEM,
+                      humanities, languages, and professional certification
+                      exams.
+                    </p>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </AnimatedSection>
 
             {/* FAQ Item 3 */}
-            <div className="bg-white rounded-lg shadow-sm">
-              <button
-                className="w-full p-6 text-left flex justify-between items-center"
-                onClick={() => toggleFaq(2)}
+            <AnimatedSection delay={0.3}>
+              <motion.div
+                className="glass glass-hover rounded-xl overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
               >
-                <h3 className="text-lg font-semibold text-studybud-gray-800">
-                  Is there a mobile app?
-                </h3>
-                <span className="text-2xl text-studybud-gray-400">
-                  {expandedFaq === 2 ? "−" : "+"}
-                </span>
-              </button>
-              {expandedFaq === 2 && (
-                <div className="px-6 pb-6">
-                  <p className="text-studybud-gray-600">
-                    Our platform is fully responsive and works perfectly on all
-                    devices. Native mobile apps are coming soon!
-                  </p>
-                </div>
-              )}
-            </div>
+                <button
+                  className="w-full p-6 text-left flex justify-between items-center"
+                  onClick={() => toggleFaq(2)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Is there a mobile app?
+                  </h3>
+                  <motion.span
+                    className="text-2xl text-gray-600"
+                    animate={{ rotate: expandedFaq === 2 ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {expandedFaq === 2 ? "−" : "+"}
+                  </motion.span>
+                </button>
+                <motion.div
+                  initial={false}
+                  animate={{ height: expandedFaq === 2 ? "auto" : 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-600">
+                      Our platform is fully responsive and works perfectly on
+                      all devices. Native mobile apps are coming soon!
+                    </p>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </AnimatedSection>
           </div>
         </div>
       </section>

@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import WaitlistModal from "../components/WaitlistModal";
+import AnimatedSection from "../components/AnimatedSection";
+import MagneticButton from "../components/MagneticButton";
+import GlassCard from "../components/GlassCard";
 
 const Recruiters: React.FC = () => {
   const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const openWaitlistModal = () => {
     setIsWaitlistModalOpen(true);
@@ -15,8 +28,12 @@ const Recruiters: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 shadow-sm">
+      {/* Header with Glassmorphism */}
+      <motion.header 
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          scrolled ? "glass shadow-lg" : "bg-white border-b border-gray-200"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -66,46 +83,89 @@ const Recruiters: React.FC = () => {
 
             {/* Join Waitlist Button */}
             <div className="flex items-center space-x-4">
-              <button
+              <motion.button
                 onClick={openWaitlistModal}
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-6 py-2 rounded-lg font-semibold relative overflow-hidden group"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                Join Our Waitlist
-              </button>
+                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+                <span className="relative z-10">Join Our Waitlist</span>
+              </motion.button>
             </div>
           </div>
         </div>
-      </header>
+      </motion.header>
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-purple-50 via-blue-50 to-blue-100 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero Section with Animated Mesh Gradient */}
+      <section className="relative bg-mesh-gradient py-32 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl"
+            animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-500/30 rounded-full blur-3xl"
+            animate={{ x: [0, -50, 0], y: [0, -30, 0] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-5xl font-bold text-gray-900 mb-6">
-                Find Top Talent with Data-Driven Insights
-              </h1>
-              <p className="text-xl text-gray-600 mb-8">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
+              }}
+            >
+              <motion.h1
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                className="text-5xl font-bold text-gray-900 mb-6"
+              >
+                <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
+                  Find Top Talent
+                </span>{" "}
+                with Data-Driven Insights
+              </motion.h1>
+              <motion.p
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                className="text-xl text-gray-700 mb-8"
+              >
                 Transform your hiring process with AI-powered assessments and
                 comprehensive candidate analysis. Make informed decisions with
                 confidence.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={openWaitlistModal}
-                  className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors text-lg font-medium"
-                >
+              </motion.p>
+              <motion.div
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              >
+                <MagneticButton onClick={openWaitlistModal}>
                   Join Our Waitlist
-                </button>
-              </div>
-            </div>
-            <div>
-              <img
-                src="https://api.builder.io/api/v1/image/assets/TEMP/fec5375a3a3a6bdc5db921357833e8b44d5b6376?width=1168"
-                alt="Recruiting dashboard"
-                className="w-full h-auto rounded-lg shadow-lg"
-              />
-            </div>
+                </MagneticButton>
+              </motion.div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <motion.div
+                animate={{ y: [0, -20, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                whileHover={{ scale: 1.05, rotateY: 5 }}
+                className="relative"
+              >
+                <img
+                  src="https://api.builder.io/api/v1/image/assets/TEMP/fec5375a3a3a6bdc5db921357833e8b44d5b6376?width=1168"
+                  alt="Recruiting dashboard"
+                  className="w-full h-auto rounded-lg shadow-2xl"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg blur-xl -z-10" />
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
