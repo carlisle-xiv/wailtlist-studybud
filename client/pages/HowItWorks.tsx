@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import WaitlistModal from "../components/WaitlistModal";
+import AnimatedSection from "../components/AnimatedSection";
+import MagneticButton from "../components/MagneticButton";
+import GlassCard from "../components/GlassCard";
 
 export default function HowItWorks() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleFaq = (index: number) => {
     setExpandedFaq(expandedFaq === index ? null : index);
@@ -20,8 +33,12 @@ export default function HowItWorks() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+      {/* Header with Glassmorphism */}
+      <motion.header 
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          scrolled ? "glass shadow-lg" : "bg-white border-b border-gray-200"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="flex items-center space-x-2">
@@ -65,34 +82,67 @@ export default function HowItWorks() {
               </Link>
             </nav>
 
-            <button
+            <motion.button
               onClick={openWaitlistModal}
-              className="bg-studybud-blue-500 text-white px-6 py-2 rounded-lg hover:bg-studybud-blue-600 transition-colors font-semibold"
+              className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-6 py-2 rounded-lg font-semibold relative overflow-hidden group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Join Our Waitlist
-            </button>
+              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+              <span className="relative z-10">Join Our Waitlist</span>
+            </motion.button>
           </div>
         </div>
-      </header>
+      </motion.header>
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-50 to-purple-50 to-teal-50 py-20">
-        <div className="max-w-4xl mx-auto text-center px-6">
-          <h1 className="text-5xl font-bold text-studybud-gray-800 mb-6">
-            How StudyBud Works
-          </h1>
-          <p className="text-xl text-studybud-gray-600 mb-8">
+      {/* Hero Section with Animated Mesh Gradient */}
+      <section className="relative bg-mesh-gradient py-32 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"
+            animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-500/30 rounded-full blur-3xl"
+            animate={{ x: [0, -50, 0], y: [0, -30, 0] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
+
+        <motion.div 
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
+          }}
+          className="max-w-4xl mx-auto text-center px-6 relative z-10"
+        >
+          <motion.h1
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            className="text-5xl font-bold text-gray-900 mb-6"
+          >
+            <span className="bg-gradient-to-r from-blue-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
+              How StudyBud Works
+            </span>
+          </motion.h1>
+          <motion.p
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            className="text-xl text-gray-700 mb-8"
+          >
             Transform your study routine with AI-powered insights in just three
             simple steps. See how thousands of students are achieving better
             results.
-          </p>
-          <button
-            onClick={openWaitlistModal}
-            className="bg-button-gradient text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all"
+          </motion.p>
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
           >
-            Join Our Waitlist
-          </button>
-        </div>
+            <MagneticButton onClick={openWaitlistModal}>
+              Join Our Waitlist
+            </MagneticButton>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Three Steps to Success */}

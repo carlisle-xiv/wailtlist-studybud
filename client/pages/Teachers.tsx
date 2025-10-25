@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import WaitlistModal from "../components/WaitlistModal";
+import AnimatedSection from "../components/AnimatedSection";
+import MagneticButton from "../components/MagneticButton";
+import GlassCard from "../components/GlassCard";
 import {
   AlignLeft,
   BarChart3,
@@ -19,6 +23,15 @@ import {
 
 const Teachers = () => {
   const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const openWaitlistModal = () => {
     setIsWaitlistModalOpen(true);
@@ -30,8 +43,12 @@ const Teachers = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+      {/* Header with Glassmorphism */}
+      <motion.header 
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          scrolled ? "glass shadow-lg" : "bg-white border-b border-gray-200"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -77,46 +94,90 @@ const Teachers = () => {
 
             {/* CTA Button */}
             <div className="flex items-center">
-              <button
+              <motion.button
                 onClick={openWaitlistModal}
-                className="bg-studybud-blue-500 text-white px-4 py-2 rounded-lg hover:bg-studybud-blue-600 transition-colors"
+                className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-6 py-2 rounded-lg font-semibold relative overflow-hidden group"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                Join Our Waitlist
-              </button>
+                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+                <span className="relative z-10">Join Our Waitlist</span>
+              </motion.button>
             </div>
           </div>
         </div>
-      </header>
+      </motion.header>
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-50 via-purple-50 to-blue-50 py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero Section with Animated Mesh Gradient */}
+      <section className="relative bg-mesh-gradient py-32 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-500/30 rounded-full blur-3xl"
+            animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl"
+            animate={{ x: [0, -50, 0], y: [0, -30, 0] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-5xl font-bold text-gray-900 mb-6">
-                Empower Your Teaching with AI Insights
-              </h1>
-              <p className="text-xl text-gray-600 mb-8">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
+              }}
+            >
+              <motion.h1
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                className="text-5xl font-bold text-gray-900 mb-6"
+              >
+                <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                  Empower Your Teaching
+                </span>{" "}
+                with AI Insights
+              </motion.h1>
+              <motion.p
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                className="text-xl text-gray-700 mb-8"
+              >
                 Create intelligent assessments, track student progress, and
                 provide personalized feedback at scale. Transform your classroom
                 with StudyBud for educators.
-              </p>
-              <div>
-                <button
-                  onClick={openWaitlistModal}
-                  className="bg-gradient-to-r from-studybud-blue-500 to-cyan-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all"
-                >
+              </motion.p>
+              <motion.div
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              >
+                <MagneticButton onClick={openWaitlistModal}>
                   Join Our Waitlist
-                </button>
-              </div>
-            </div>
-            <div className="flex justify-center">
-              <img
-                src="/images/Teacher Dashboard.png"
-                alt="Teacher using StudyBud AI in classroom"
-                className="w-[29rem] h-96 rounded-2xl shadow-2xl"
-              />
-            </div>
+                </MagneticButton>
+              </motion.div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="flex justify-center"
+            >
+              <motion.div
+                animate={{ y: [0, -20, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                whileHover={{ scale: 1.05, rotateY: 5 }}
+                className="relative"
+              >
+                <img
+                  src="/images/Teacher Dashboard.png"
+                  alt="Teacher using StudyBud AI in classroom"
+                  className="w-[29rem] h-96 rounded-2xl shadow-2xl"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-2xl blur-xl -z-10" />
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
