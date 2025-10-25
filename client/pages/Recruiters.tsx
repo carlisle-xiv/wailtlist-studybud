@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import WaitlistModal from "../components/WaitlistModal";
 import AnimatedSection from "../components/AnimatedSection";
 import MagneticButton from "../components/MagneticButton";
@@ -9,6 +9,56 @@ import GlassCard from "../components/GlassCard";
 const Recruiters: React.FC = () => {
   const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [currentCandidateIndex, setCurrentCandidateIndex] = useState(0);
+
+  // Candidate data array
+  const candidates = [
+    {
+      name: "Kweku Asamoah",
+      role: "Frontend Developer",
+      overallScore: "8.7/10",
+      experience: "5 years",
+      matchScore: "85%",
+      scoreColor: "green-600",
+      matchColor: "blue-600",
+    },
+    {
+      name: "Abdul-Razak Adisah",
+      role: "UX Designer",
+      overallScore: "9.2/10",
+      experience: "2 years",
+      matchScore: "72%",
+      scoreColor: "green-600",
+      matchColor: "gray-600",
+    },
+    {
+      name: "Felix Owusu Darko",
+      role: "QA Engineer",
+      overallScore: "8.9/10",
+      experience: "6 years",
+      matchScore: "91%",
+      scoreColor: "green-600",
+      matchColor: "green-600",
+    },
+    {
+      name: "Edmond Obeng-Frimpong",
+      role: "Product Manager",
+      overallScore: "9.0/10",
+      experience: "8 years",
+      matchScore: "97%",
+      scoreColor: "green-600",
+      matchColor: "green-600",
+    },
+    {
+      name: "Priya Patel",
+      role: "Product Manager",
+      overallScore: "9.0/10",
+      experience: "8 years",
+      matchScore: "97%",
+      scoreColor: "green-600",
+      matchColor: "green-600",
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +67,14 @@ const Recruiters: React.FC = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Auto-flip candidates every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentCandidateIndex((prev) => (prev + 1) % candidates.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [candidates.length]);
 
   const openWaitlistModal = () => {
     setIsWaitlistModalOpen(true);
@@ -29,7 +87,7 @@ const Recruiters: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header with Glassmorphism */}
-      <motion.header 
+      <motion.header
         className={`sticky top-0 z-50 transition-all duration-300 ${
           scrolled ? "glass shadow-lg" : "bg-white border-b border-gray-200"
         }`}
@@ -123,7 +181,10 @@ const Recruiters: React.FC = () => {
               }}
             >
               <motion.h1
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
                 className="text-5xl font-bold text-gray-900 mb-6"
               >
                 <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
@@ -132,7 +193,10 @@ const Recruiters: React.FC = () => {
                 with Data-Driven Insights
               </motion.h1>
               <motion.p
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
                 className="text-xl text-gray-700 mb-8"
               >
                 Transform your hiring process with AI-powered assessments and
@@ -140,7 +204,10 @@ const Recruiters: React.FC = () => {
                 confidence.
               </motion.p>
               <motion.div
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
               >
                 <MagneticButton onClick={openWaitlistModal}>
                   Join Our Waitlist
@@ -154,7 +221,11 @@ const Recruiters: React.FC = () => {
             >
               <motion.div
                 animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
                 whileHover={{ scale: 1.05, rotateY: 5 }}
                 className="relative"
               >
@@ -475,28 +546,65 @@ const Recruiters: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div>
-              <div className="bg-white p-8 rounded-xl shadow-lg">
-                <div className="text-center mb-6">
-                  <h4 className="text-lg font-bold text-gray-900">
-                    Kweku Asamoah
-                  </h4>
-                  <p className="text-gray-600">Frontend Developer</p>
-                </div>
-                <div className="space-y-3">
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Overall Score</span>
-                    <span className="font-bold text-green-600">8.7/10</span>
+            <div className="relative h-full">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentCandidateIndex}
+                  initial={{ rotateY: 90, opacity: 0 }}
+                  animate={{ rotateY: 0, opacity: 1 }}
+                  exit={{ rotateY: -90, opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="bg-white p-8 rounded-xl shadow-lg"
+                  style={{ transformStyle: "preserve-3d" }}
+                >
+                  <div className="text-center mb-6">
+                    <h4 className="text-lg font-bold text-gray-900">
+                      {candidates[currentCandidateIndex].name}
+                    </h4>
+                    <p className="text-gray-600">
+                      {candidates[currentCandidateIndex].role}
+                    </p>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Years Experience</span>
-                    <span className="font-medium">5 years</span>
+                  <div className="space-y-3">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Overall Score</span>
+                      <span
+                        className={`font-bold text-${candidates[currentCandidateIndex].scoreColor}`}
+                      >
+                        {candidates[currentCandidateIndex].overallScore}
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Years Experience</span>
+                      <span className="font-medium">
+                        {candidates[currentCandidateIndex].experience}
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Match Score</span>
+                      <span
+                        className={`font-bold text-${candidates[currentCandidateIndex].matchColor}`}
+                      >
+                        {candidates[currentCandidateIndex].matchScore}
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Match Score</span>
-                    <span className="font-bold text-blue-600">94%</span>
-                  </div>
-                </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Indicator dots */}
+              <div className="flex justify-center gap-2 mt-4">
+                {candidates.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentCandidateIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === currentCandidateIndex
+                        ? "bg-purple-600 w-6"
+                        : "bg-gray-300"
+                    }`}
+                  />
+                ))}
               </div>
             </div>
           </div>
